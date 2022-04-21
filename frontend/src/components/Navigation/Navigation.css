@@ -1,0 +1,18 @@
+.navBar {
+  position: fixed;
+  display: block;
+  margin:0px;
+  background-color: black;
+  height:60px;
+  width: fill;
+}
+.home {
+  margin-top: 1px;
+}
+.profile-btn{
+      float:right;
+      margin-top: -17px;
+      margin-right:10px;
+      font-size: 15px;
+
+}
