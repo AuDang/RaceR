@@ -19,21 +19,25 @@ function Navigation({ isLoaded }) {
     );
   } else {
     sessionLinks = (
-      <>
-        <SignupFormModal />
+      <div className="nav-buttons">
         <LoginFormModal />
-
-      </>
+        <SignupFormModal />
+      </div>
     );
   }
 
   return (
-    <header className="navBar">
-      <ul>
-          <NavLink className="home" exact to="/">RaceR</NavLink>
-          {isLoaded && sessionLinks}
+    <div className="navbar">
+      <ul className="navbar-ul">
+        <li className="navbar-li">
+          <div className="nav-links">
+            <NavLink className="racer" exact to="/">RaceR</NavLink>
+            <NavLink className="builds" to="/photos">Builds</NavLink>
+          </div>
+            {isLoaded && sessionLinks}
+        </li>
       </ul>
-    </header>
+    </div>
   );
 }
 

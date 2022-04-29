@@ -1,0 +1,56 @@
+.navbar{
+ background: rgba(0,0,0,0.43);
+ height: 50px;
+ width:100vw;
+ display:flex;
+ justify-content: space-between;
+ align-items: center;
+ position: absolute;
+}
+
+.racer {
+ text-decoration: none;
+ display: flex;
+ justify-content: center;
+ color: rgb(255, 217, 0);
+ padding:10px;
+ font-size: 20px;
+ 
+}
+
+.builds {
+ text-decoration: none;
+ color: rgb(255, 217, 0);
+ display: flex;
+ padding:10px;
+ padding-left: 40px;
+ font-size: 20px;
+
+}
+
+.navbar-li {
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ align-items: center;
+ width:auto;
+}
+.navbar-ul {
+ width:100%;
+}
+
+
+.nav-links {
+ display:flex;
+ margin-left: -15px;
+
+
+}
+
+.nav-buttons {
+ display:flex;
+ flex-direction: row;
+ padding:10px;
+ justify-content: space-between;
+
+}
