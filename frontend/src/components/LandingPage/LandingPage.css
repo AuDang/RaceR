@@ -1,0 +1,33 @@
+*{
+ margin: 0;
+}
+
+.landing-page-container {
+ background-image: url("https://pbs.twimg.com/media/FEioTa1VEAEvgql?format=jpg&name=large");
+ justify-content: center;
+ align-items: center;
+ width: 100%;
+ min-height: 100%;
+ display: flex;
+ flex-direction: column;
+ background-size:cover;
+ background-repeat: no-repeat;
+ font-size: 30px;
+
+
+}
+
+.landing-page-text {
+ display: flex;
+ justify-content: center;
+ color: rgb(255,217,0);
+ font-weight: bolder;
+}
+
+.landing-page-texts {
+  display: flex;
+  justify-content: center;
+  color: rgb(255, 217, 0);
+  font-size: 25px;
+  font-weight: bolder;
+}
