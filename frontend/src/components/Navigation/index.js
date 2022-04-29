@@ -20,8 +20,8 @@ function Navigation({ isLoaded }) {
   } else {
     sessionLinks = (
       <>
-        <LoginFormModal />
         <SignupFormModal />
+        <LoginFormModal />
 
       </>
     );
