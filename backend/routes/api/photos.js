@@ -9,16 +9,6 @@ const {requireAuth} = require('../../utils/auth')
 const {uploadFile} = require('../../aws')
 
 const validatePhoto = [
- // check('userId')
- //  .exists({checkFalsy:true})
- //  .notEmpty()
- //  .isInt({min:0})
- //  .withMessage('Id can not be blank.'),
- // check('albumdId')
- //  .exists({checkFalsy:true})
- //  .notEmpty()
- //  .isInt({min:0})
- //  .withMessage('Id can not be blank'),
  check('content')
   .exists({checkFalsy:true})
   .notEmpty()
@@ -51,9 +41,16 @@ if (photo) {
 }
 }))
 
+// router.post('/newPhoto', validatePhoto, asyncHandler(async(req, res) => {
+//  const {userId, albumId, content} = req.body
+//  const photoUrl = await uploadFile(req.file)
+//  const id = await Photo.create({userId, albumId, content, photoUrl})
+//  return res.json(id)
+// }))
+
 router.post('/newPhoto', validatePhoto, asyncHandler(async(req, res) => {
- const {userId, albumId, content} = req.body
- const photoUrl = await uploadFile(req.file)
+ const {userId, albumId, content, photoUrl} = req.body
+//  const photoUrl = await uploadFile(req.file)
  const id = await Photo.create({userId, albumId, content, photoUrl})
  return res.json(id)
 }))

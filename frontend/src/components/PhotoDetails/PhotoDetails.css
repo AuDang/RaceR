@@ -1,0 +1,11 @@
+.photo-container {
+ display:flex;
+ align-items:center;
+ width: 100vw;
+}
+
+.photo-image {
+ width:70vw;
+ display:flex;
+ justify-content: center;
+}

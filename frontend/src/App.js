@@ -4,6 +4,9 @@ import { Route, Switch } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage";
+import PhotosPage from './components/PhotosPage'
+import PhotoDetails from "./components/PhotoDetails";
+import PhotoUpload from "./components/PhotoUpload";
 import LoginForm from "./components/LoginFormModal/LoginForm";
 import SignupForm from "./components/SignupFormModal/SignupForm";
 
@@ -27,6 +30,15 @@ function App() {
         <Switch>
           <Route exact path="/">
             <LandingPage />
+          </Route>
+          <Route exact path='/photos'>
+            <PhotosPage />
+          </Route>
+          <Route path='/photos/:id'>
+            <PhotoDetails />
+          </Route>
+          <Route path='/photos/newPhoto'>
+            <PhotoUpload />
           </Route>
         </Switch>
       )}
