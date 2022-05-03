@@ -28,10 +28,10 @@ const handleDelete =(id) =>{
  return (
   <div className="photo-container">
    <div className='photo-contents'>
-     <h1>{photos?.content}</h1>
-    <img className='photo-image' src={photos?.photoUrl}/>
+     <h1>{photos?.caption}</h1>
+    <img className='photo-image' src={photos?.photoUrl } alt=''/>
       <p className='photo-username'>
-        {photos?.User.username}
+        {/* {photos?.User?.username} */}
       </p>
 
         <button className='photo-delete' onClick={() => {handleDelete(id)}}>Delete Photo</button>

@@ -8,21 +8,21 @@ const PhotoUpload = () => {
 const dispatch = useDispatch()
 const history = useHistory()
 
-const [content,setContent] = useState('')
+const [caption,setCaption] = useState('')
 const [photoUrl, setPhotoUrl] = useState('')
 const [errors, setErrors] = useState([])
 const [hasSubmitted, setHasSubmitted] =useState(false)
 const sessionUser = useSelector((state) => state.session.user)
-const updateContent = (e) => setContent(e.target.value);
+const updateCaption = (e) => setCaption(e.target.value);
 const updatePhoto = (e) => setPhotoUrl(e.target.files[0])
 
 useEffect(() => {
  const errors = [];
- if(content.length <1) {
+ if(caption.length <1) {
   errors.push('Title can not be empty')
  }
  setErrors(errors)
-},[content])
+},[caption])
 
 const handleSubmit = async (e) => {
  e.preventDefault()
@@ -33,13 +33,13 @@ const handleSubmit = async (e) => {
  
 //   const payload = {
 //    userId: sessionUser.id,
-//    content,
+//    caption,
 //    photoUrl,
 //   }
 
 const form = new FormData()
 form.append('userId', sessionUser.id)
-form.append('content', content)
+form.append('caption', caption)
 form.append('photoUrl', photoUrl)
 // for (let [key, value] of form.entries()) { 
 //   console.log(key, value);
@@ -67,7 +67,7 @@ return (
      })}
     </ul>
     <label className='title'> Add a new Photo</label>
-    <input className='add-photo-input' type='text' placeholder='Title' value={content} onChange={updateContent}/>
+    <input className='add-photo-input' type='text' placeholder='Title' value={caption} onChange={updateCaption}/>
       <input type ='file' onChange={updatePhoto} accept=".jpeg, .jpg, .gif , .png"/>
       <button className='add-photo-button'type='submit'>Add Photo</button>
       <button className='cancel-button' type='button' onClick={handleCancelClick}>Cancel</button>

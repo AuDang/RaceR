@@ -23,13 +23,13 @@ const PhotosPage = () => {
       <div className='photos' key={photo.id}>
        <NavLink className='photoId' key={photo.id} to={`/photos/${photo.id}`}>
         <div className='single-photo'>
-         <img className='photo-url'src={photo.photoUrl}/>
+         <img className='photo-url'src={photo.photoUrl} alt=''/>
         </div>
         <div className='photo-content'>
-         <p className='photo-words'> {photo.content}</p>
+         <p className='photo-words'> {photo.caption}</p>
         </div>
        </NavLink>
-        <p className='userName'>{photo.User.username}</p>
+        <p className='userName'>{photo.User?.username}</p>
       </div>
      </>
     ))}
