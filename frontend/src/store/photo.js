@@ -36,11 +36,25 @@ export const getOnePhoto = (id) => async (dispatch) => {
  }
 }
 
+// export const uploadPhoto = (data) => async(dispatch) => {
+//  const res = await csrfFetch('/api/photos/newPhoto', {
+//   method: "POST",
+//   headers: {"Content-Type": 'application/json'},
+//   body: JSON.stringify(data)
+//  })
+//  if(res.ok) {
+//   const newPhoto = await res.json()
+//   dispatch(addOnePhoto(newPhoto));
+//   return newPhoto
+//  }
+// }
+
 export const uploadPhoto = (data) => async(dispatch) => {
+ console.log(data)
  const res = await csrfFetch('/api/photos/newPhoto', {
   method: "POST",
-  headers: {"Content-Type": 'application/json'},
-  body: JSON.stringify(data)
+  headers: { 'Content-Type': 'multipart/form-data' },
+  body: data,
  })
  if(res.ok) {
   const newPhoto = await res.json()

@@ -3,10 +3,10 @@
 }
 
 .photo-card {
- /* display:flex;
+ display:flex;
  flex-wrap: wrap;
  flex-direction: row;
- justify-content: center; */
+ justify-content: center; 
 }
 
 .photo-url {
@@ -21,6 +21,9 @@ height:300px;
 
 
 .photoId {
-height: 1px;
-width: 1px
+
+}
+
+.photos {
+
 }

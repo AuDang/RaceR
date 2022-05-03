@@ -9,13 +9,13 @@ const dispatch = useDispatch()
 const history = useHistory()
 
 const [content,setContent] = useState('')
-const [photo, setPhoto] = useState(null)
+const [photoUrl, setPhotoUrl] = useState('')
 // const [albumId] = useState(1)
 const [errors, setErrors] = useState([])
 const [hasSubmitted, setHasSubmitted] =useState(false)
 const sessionUser = useSelector((state) => state.session.user)
 const updateContent = (e) => setContent(e.target.value);
-const updatePhoto = (e) => setPhoto(e.target.value)
+const updatePhoto = (e) => setPhotoUrl(e.target.files[0])
 
 useEffect(() => {
  const errors = [];
@@ -32,17 +32,25 @@ const handleSubmit = async (e) => {
 
  if(errors.length > 0) return 
  
-  const payload = {
-   userId: sessionUser.id,
-   content,
-   photo,
+//   const payload = {
+//    userId: sessionUser.id,
+//    content,
+//    photoUrl,
+//   }
 
-  }
-  let uploadedPhoto = await dispatch(photoActions.uploadPhoto(payload))
-  console.log(uploadedPhoto)
-  let redirected = Object.values(uploadedPhoto)
-  if (payload) {
-   history.push(`/photos/${redirected.id}`)
+const form = new FormData()
+form.append('userId', sessionUser.id)
+form.append('content', content)
+form.append('photoUrl', photoUrl)
+for (let [key, value] of form.entries()) { 
+  console.log(key, value);
+}
+
+  let uploadedPhoto = await dispatch(photoActions.uploadPhoto(form))
+  // console.log(uploadedPhoto)
+
+  if (uploadedPhoto) {
+   history.push(`/photos/${uploadedPhoto.id}`)
  }
 }
 const handleCancelClick = (e) => {
@@ -62,8 +70,8 @@ return (
     <label> Add a new Photo</label>
     <input className='add-photo-input' type='text' placeholder='Title' value={content} onChange={updateContent}/>
      <label>
-      <input type ='text' onChange={updatePhoto}/>
      </label>
+      <input type ='file' onChange={updatePhoto} accept=".jpeg, .jpg, .gif , .png"/>
       <button className='add-photo-button'type='submit'>Add Photo</button>
       <button className='cancel-button' type='button' onClick={handleCancelClick}>Cancel</button>
    </form>

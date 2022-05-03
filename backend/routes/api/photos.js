@@ -7,6 +7,7 @@ const {check, validationResult} = require('express-validator')
 const {handleValidationErrors} = require('../../utils/validation')
 const {requireAuth} = require('../../utils/auth')
 const {uploadFile} = require('../../aws')
+const {singleMulterUpload} =require('../../aws')
 
 const validatePhoto = [
  check('content')
@@ -41,19 +42,21 @@ if (photo) {
 }
 }))
 
-// router.post('/newPhoto', validatePhoto, asyncHandler(async(req, res) => {
+router.post('/newPhoto', singleMulterUpload('photoUrl'), asyncHandler(async(req, res) => {
+  // console.log('hello', req.file)
 //  const {userId, albumId, content} = req.body
-//  const photoUrl = await uploadFile(req.file)
-//  const id = await Photo.create({userId, albumId, content, photoUrl})
-//  return res.json(id)
-// }))
-
-router.post('/newPhoto', validatePhoto, asyncHandler(async(req, res) => {
- const {userId, albumId, content, photoUrl} = req.body
-//  const photoUrl = await uploadFile(req.file)
+ const photoUrl = await uploadFile(req.file)
+ console.log('hello', photoUrl)
  const id = await Photo.create({userId, albumId, content, photoUrl})
  return res.json(id)
 }))
+
+// router.post('/newPhoto', validatePhoto, asyncHandler(async(req, res) => {
+//  const {userId, albumId, content, photoUrl} = req.body
+// //  const photoUrl = await uploadFile(req.file)
+//  const id = await Photo.create({userId, albumId, content, photoUrl})
+//  return res.json(id)
+// }))
 
 router.put('/:id', validatePhoto, asyncHandler(async(req,res) => {
 const parsedPhotoId = parseInt(req.params.id)
