@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom"
 
 
 
-const PhotoEdit = ({photo}) => {
+const PhotoEdit = ({photo, showModal}) => {
 const history = useHistory()
 const dispatch = useDispatch()
 
@@ -46,6 +46,7 @@ const handleSubmit = async (e) => {
   // console.log(uploadedPhoto)
 
   if (uploadedPhoto) {
+  showModal(false)
    history.push(`/photos/${uploadedPhoto.id}`)
  }
 }

@@ -40,7 +40,7 @@ console.log('id',photos)
 //   console.log('test', filtered)
 // }
 if (sessionUser) {
-  if (sessionUser.id === photos.userId) {
+  if (sessionUser.id === photos?.userId) {
     deleteButton = (<button className='photo-delete' onClick={() => {handleDelete(id)}}>Delete Photo</button>)
     editButton = (<PhotoEditModal/>)
   }
@@ -59,7 +59,6 @@ const hideForm = (e) => {
       <p className='photo-username'>
         {photos?.User?.username}
       </p>
-
         {/* <button className='photo-delete' onClick={() => {handleDelete(id)}}>Delete Photo</button> */}
         {deleteButton}
         {editButton}

@@ -11,7 +11,7 @@ const PhotoEditModal = () => {
     <button className='edit-modal-button'onClick={() => setShowModal(true)}>Edit Photo</button>
     {showModal && (
      <Modal onClose={() => setShowModal(false)}>
-      <PhotoEdit />
+      <PhotoEdit showModal={setShowModal}/>
      </Modal>
     )}
   </div>
