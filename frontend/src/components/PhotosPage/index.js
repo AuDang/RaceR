@@ -17,7 +17,7 @@ const PhotosPage = () => {
 
  return (
   <div className="photos-container">
-   <div clasName='photo-card'>
+   <div className='photo-card'>
     {photoData?.map((photo) => (
      <>
       <div className='photos' key={photo.id}>

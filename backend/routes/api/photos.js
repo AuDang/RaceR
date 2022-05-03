@@ -59,11 +59,12 @@ router.post('/newPhoto', singleMulterUpload('photoUrl'), asyncHandler(async(req,
 // }))
 
 router.put('/:id', validatePhoto, asyncHandler(async(req,res) => {
-const parsedPhotoId = parseInt(req.params.id)
-const photo = await Photo.findbyPk(parsedPhotoId, {include: db.User}, {include:db.Comment})
-const {userId, albumId, photoUrl, content} = req.body;
-const newPost = await image.update({userId, albumId, photoUrl, content})
-return res.json(photo)
+  console.log('tester', req.params.id)
+const parsedPhotoId = parseInt(req.params.id, 10)
+const {userId, albumId, content} = req.body;
+const photo = await db.Photo.findByPk(parsedPhotoId)
+const newPhoto = await photo.update({userId, albumId, content})
+return res.json(newPhoto)
 }))
 
 router.delete('/:id', asyncHandler(async(req, res) => {

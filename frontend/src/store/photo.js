@@ -64,7 +64,7 @@ export const uploadPhoto = (data) => async(dispatch) => {
 }
 
 export const editPhoto = (data) => async (dispatch) => {
-const res = await csrfFetch(`/api/photos/${data.id}`, {
+const res = await csrfFetch(`/api/photos/${+data.id}`, {
  method: "PUT",
  headers: {'Content-Type':'application/json' },
  body: JSON.stringify(data)
@@ -86,7 +86,7 @@ export const deletePhoto = (id) => async (dispatch) => {
 }
 
 const photosReducer = (state = {}, action) => {
-let newState = {}
+
 switch(action.type) {
  case LOAD_PHOTOS: {
   const newState = {...state}

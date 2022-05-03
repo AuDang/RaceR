@@ -10,7 +10,6 @@ const history = useHistory()
 
 const [content,setContent] = useState('')
 const [photoUrl, setPhotoUrl] = useState('')
-// const [albumId] = useState(1)
 const [errors, setErrors] = useState([])
 const [hasSubmitted, setHasSubmitted] =useState(false)
 const sessionUser = useSelector((state) => state.session.user)
@@ -42,9 +41,9 @@ const form = new FormData()
 form.append('userId', sessionUser.id)
 form.append('content', content)
 form.append('photoUrl', photoUrl)
-for (let [key, value] of form.entries()) { 
-  console.log(key, value);
-}
+// for (let [key, value] of form.entries()) { 
+//   console.log(key, value);
+// }
 
   let uploadedPhoto = await dispatch(photoActions.uploadPhoto(form))
   // console.log(uploadedPhoto)
@@ -67,10 +66,8 @@ return (
       <li key={idx}>{error}</li>
      })}
     </ul>
-    <label> Add a new Photo</label>
+    <label className='title'> Add a new Photo</label>
     <input className='add-photo-input' type='text' placeholder='Title' value={content} onChange={updateContent}/>
-     <label>
-     </label>
       <input type ='file' onChange={updatePhoto} accept=".jpeg, .jpg, .gif , .png"/>
       <button className='add-photo-button'type='submit'>Add Photo</button>
       <button className='cancel-button' type='button' onClick={handleCancelClick}>Cancel</button>
