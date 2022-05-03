@@ -6,8 +6,8 @@ const db = require('../../db/models')
 const {check, validationResult} = require('express-validator')
 const {handleValidationErrors} = require('../../utils/validation')
 const {requireAuth} = require('../../utils/auth')
-const {uploadFile} = require('../../aws')
-const {singleMulterUpload} =require('../../aws')
+
+const {singleMulterUpload, uploadFile, singlePublicFileUpload} =require('../../aws')
 
 const validatePhoto = [
  check('content')
@@ -44,11 +44,11 @@ if (photo) {
 
 router.post('/newPhoto', singleMulterUpload('photoUrl'), asyncHandler(async(req, res) => {
   // console.log('hello', req.file)
-//  const {userId, albumId, content} = req.body
- const photoUrl = await uploadFile(req.file)
- console.log('hello', photoUrl)
- const id = await Photo.create({userId, albumId, content, photoUrl})
- return res.json(id)
+ const {userId, albumId, content} = req.body
+ const photoUrl = await singlePublicFileUpload (req.file)
+//  console.log('hello', photoUrl)
+ const photo = await Photo.create({userId, albumId, content, photoUrl})
+ return res.json(photo)
 }))
 
 // router.post('/newPhoto', validatePhoto, asyncHandler(async(req, res) => {
