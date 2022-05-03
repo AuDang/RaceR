@@ -62,7 +62,7 @@ router.put('/:id', validatePhoto, asyncHandler(async(req,res) => {
   console.log('tester', req.params.id)
 const parsedPhotoId = parseInt(req.params.id, 10)
 const {userId, albumId, content} = req.body;
-const photo = await db.Photo.findByPk(parsedPhotoId)
+const photo = await Photo.findByPk(parsedPhotoId, {include: db.User})
 const newPhoto = await photo.update({userId, albumId, content})
 return res.json(newPhoto)
 }))
