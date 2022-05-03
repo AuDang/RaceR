@@ -22,7 +22,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      content: {
+      caption: {
         type: Sequelize.STRING,
         allowNull: false,
       },

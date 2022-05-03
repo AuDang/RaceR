@@ -10,7 +10,7 @@ const {requireAuth} = require('../../utils/auth')
 const {singleMulterUpload, uploadFile, singlePublicFileUpload} =require('../../aws')
 
 const validatePhoto = [
- check('content')
+ check('caption')
   .exists({checkFalsy:true})
   .notEmpty()
   .withMessage('Title must contain text')
@@ -44,26 +44,26 @@ if (photo) {
 
 router.post('/newPhoto', singleMulterUpload('photoUrl'), asyncHandler(async(req, res) => {
   // console.log('hello', req.file)
- const {userId, albumId, content} = req.body
+ const {userId, albumId, caption} = req.body
  const photoUrl = await singlePublicFileUpload (req.file)
 //  console.log('hello', photoUrl)
- const photo = await Photo.create({userId, albumId, content, photoUrl})
+ const photo = await Photo.create({userId, albumId, caption, photoUrl})
  return res.json(photo)
 }))
 
 // router.post('/newPhoto', validatePhoto, asyncHandler(async(req, res) => {
-//  const {userId, albumId, content, photoUrl} = req.body
+//  const {userId, albumId, caption, photoUrl} = req.body
 // //  const photoUrl = await uploadFile(req.file)
-//  const id = await Photo.create({userId, albumId, content, photoUrl})
+//  const id = await Photo.create({userId, albumId, caption, photoUrl})
 //  return res.json(id)
 // }))
 
 router.put('/:id', validatePhoto, asyncHandler(async(req,res) => {
   console.log('tester', req.params.id)
 const parsedPhotoId = parseInt(req.params.id, 10)
-const {userId, albumId, content} = req.body;
+const {userId, albumId, caption} = req.body;
 const photo = await Photo.findByPk(parsedPhotoId, {include: db.User})
-const newPhoto = await photo.update({userId, albumId, content})
+const newPhoto = await photo.update({userId, albumId, caption})
 return res.json(newPhoto)
 }))
 
