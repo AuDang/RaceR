@@ -25,7 +25,11 @@
  padding:10px;
  padding-left: 40px;
  font-size: 20px;
+}
 
+.modal {
+ display:flex;
+ padding:10px;
 }
 
 .navbar-li {

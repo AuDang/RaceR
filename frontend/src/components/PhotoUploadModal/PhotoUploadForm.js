@@ -1,10 +1,9 @@
 import {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import { uploadPhoto } from '../../store/photo'
 import { useHistory } from 'react-router-dom'
 import * as photoActions from '../../store/photo'
 
-const PhotoUpload = () => {
+const PhotoUploadForm = () => {
 const dispatch = useDispatch()
 const history = useHistory()
 
@@ -31,11 +30,7 @@ const handleSubmit = async (e) => {
 
  if(errors.length > 0) return 
  
-//   const payload = {
-//    userId: sessionUser.id,
-//    caption,
-//    photoUrl,
-//   }
+
 
 const form = new FormData()
 form.append('userId', sessionUser.id)
@@ -76,4 +71,4 @@ return (
  </div>
 )
 }
-export default PhotoUpload
+export default PhotoUploadForm

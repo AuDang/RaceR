@@ -6,7 +6,7 @@ import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage";
 import PhotosPage from './components/PhotosPage'
 import PhotoDetails from "./components/PhotoDetails";
-import PhotoUpload from "./components/PhotoUpload";
+import PhotoUploadForm from "./components/PhotoUploadModal";
 import LoginForm from "./components/LoginFormModal/LoginForm";
 import SignupForm from "./components/SignupFormModal/SignupForm";
 
@@ -38,7 +38,7 @@ function App() {
             <PhotoDetails />
           </Route>
           <Route path='/photos/newPhoto'>
-            <PhotoUpload />
+            <PhotoUploadForm />
           </Route>
         </Switch>
       )}

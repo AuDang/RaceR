@@ -1,15 +1,18 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import './Navigation.css';
+import PhotoUploadModal from '../PhotoUploadModal';
 // import CreatePostForm from '../CreatePostForm';
 
 function Navigation({ isLoaded }) {
+  const {id} = useParams()
+  const photos = useSelector((state) =>state.photos[id])
   const sessionUser = useSelector(state => state.session.user);
-
+  let uploadButton
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
@@ -17,6 +20,8 @@ function Navigation({ isLoaded }) {
       <ProfileButton user={sessionUser} />
       </div>
     );
+      uploadButton =(<PhotoUploadModal/>)
+
   } else {
     sessionLinks = (
       <div className="nav-buttons">
@@ -33,6 +38,8 @@ function Navigation({ isLoaded }) {
           <div className="nav-links">
             <NavLink className="racer" exact to="/">RaceR</NavLink>
             <NavLink className="builds" to="/photos">Builds</NavLink>
+            {uploadButton}
+            {/* <PhotoUploadModal className='modal'/> */}
           </div>
             {isLoaded && sessionLinks}
         </li>
