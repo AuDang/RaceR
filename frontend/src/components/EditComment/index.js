@@ -36,7 +36,7 @@ const handleSubmit = async (e) => {
  if(errors.length > 0) return 
 
  const payload ={
-  // ...comments,
+  ...comments,
   id: comments?.id,
   userId: sessionUser?.id,
   photoId: comments?.photoId ,

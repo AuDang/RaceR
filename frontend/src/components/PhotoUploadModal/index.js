@@ -8,7 +8,9 @@ const PhotoUploadModal = () => {
 
  return (
   <div className='upload-button'>
-    <button onClick={() => setShowModal(true)}>Upload</button>
+    {/* <button className='button-icon'type='button' onClick={() => setShowModal(true)}> */}
+      <i class="fa fa-cloud-upload" type='button' onClick={() => setShowModal(true)}aria-hidden="true"></i>
+      {/* </button> */}
     {showModal && (
      <Modal onClose={() => setShowModal(false)}>
       <PhotoUploadForm showModal={setShowModal}/>

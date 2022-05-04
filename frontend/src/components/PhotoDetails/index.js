@@ -41,7 +41,6 @@ const PhotoDetails =() => {
   }
   
   // console.log('comment', comments)
-  console.log('comment', comments[id]?.userId)
   
 
 const commentDelete = async (e, id) =>{
@@ -51,8 +50,8 @@ const commentDelete = async (e, id) =>{
 let deleteButton =null
 let editButton=null
 let addComment=null
-let editComment= null
-let deleteComment= null
+let editComment
+// let deleteComment= null
 
 
 if (sessionUser) {
@@ -61,14 +60,8 @@ if (sessionUser) {
     deleteButton = (<button className='photo-delete' onClick={() => {handleDelete(id)}}>Delete Photo</button>)
     editButton = (<PhotoEditModal/>)
   } 
-  // if (sessionUser.id === comments[id]?.userId) {
-  //   editComment = (<EditCommentForm />)
-  //   commentDelete = (<button type='button' onClick={(e)=>commentDelete(e, comment?.id)}>Delete</button>)
-  // }
-  // (sessionUser.id ===)
+
 }
-
-
 
 const hideForm = (e) => {
   setShowForm(false)
@@ -82,10 +75,11 @@ if (comment?.photoId === photos?.id) return true
 
 })
 
-console.log('filtered', filteredComments)
 
 
-
+// console.log('filtered', filteredComments)
+// console.log('comments', filteredComments[id])
+// console.log('user', sessionUser?.id)
 
  return (
   <div className="photo-container">
@@ -95,7 +89,7 @@ console.log('filtered', filteredComments)
       <p className='photo-username'>
         {photos?.User?.username}
       </p>
-        {deleteButton}
+        {deleteButton} 
         {editButton}
    </div>
    <div className='comments-container'>
@@ -104,15 +98,18 @@ console.log('filtered', filteredComments)
       {filteredComments?.map((comment) => (
         <div className='all-comments'key={comment?.id}>
           <li className='comments-list'>{comment?.comment}</li>
-          <div>
-        <EditCommentForm comments={comment}/>
-        <button type='button' onClick={(e)=>commentDelete(e, comment?.id)}>Delete</button>
-          </div>
-            <p className='comment-username'>{comment?.User?.username}</p>
-        <div/>
+          {console.log('COMMENT', comment)}
+          {sessionUser?.id === comment?.userId &&
+          <>
+          <EditCommentForm comments={comment}/>
+          <button type='button' onClick={(e)=>commentDelete(e, comment?.id)}>Delete</button>
+        </>
+        } 
+        <p className='comment-username'>{comment.User?.username}</p>
     </div>
         ))}
       {addComment}
+      
       </div>
      </div>
   </div>

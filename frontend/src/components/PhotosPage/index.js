@@ -29,7 +29,7 @@ const PhotosPage = () => {
          <p className='photo-words'> {photo.caption}</p>
         </div>
        </NavLink>
-        <p className='userName'>{photo.User?.username}</p>
+        <p className='userName'>Posted By: {photo.User?.username}</p>
       </div>
      </>
     ))}

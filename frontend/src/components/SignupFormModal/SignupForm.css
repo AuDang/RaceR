@@ -4,6 +4,11 @@
     margin-top:5px;
 } */
 
-/* .sign-up-button {
-
-} */
+.sign-up-button {
+    font-size: 18px;
+    font-weight: bolder;
+    background-color: black;
+    color: rgb(255, 217, 0);
+    border-radius: 10%;
+    outline: 2px solid rgb(255, 217, 0);
+}
