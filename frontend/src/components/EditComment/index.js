@@ -10,25 +10,24 @@ const EditCommentForm = ({comments}) => {
 const dispatch =useDispatch()
 const history =useHistory()
 const { id } = useParams();
-const [comment, setComment]= useState('')
+const [newComment, setNewComment]= useState('')
 console.log(id)
-console.log(comment)
+console.log(comments)
 const [errors, setErrors] = useState([])
-
 const [showForm, setShowForm] =useState(false)
 const [hasSubmitted, setHasSubmitted] = useState(false)
 const sessionUser = useSelector((state) => state.session.user)
-const updateComment = (e) => setComment(e.target.value);
+// const updateComment = (e) => setComment(e.target.value);
 
 useEffect(() => {
  const errors = [];
- if(comment.length < 0) {errors.push('Please write something...')
- }
+ if(newComment.length < 1) errors.push('Please write something...')
+
  // if(comment.length > 250) {
  //  errors.push('Comment must be shorter than 250 characters')
  // }
  setErrors(errors)
-},[comment])
+},[newComment])
 
 const handleSubmit = async (e) => {
  e.preventDefault()
@@ -37,16 +36,18 @@ const handleSubmit = async (e) => {
  if(errors.length > 0) return 
 
  const payload ={
-  ...comments,
-  userId: comments?.userId,
+  // ...comments,
+  id: comments?.id,
+  userId: sessionUser?.id,
   photoId: comments?.photoId ,
+  comment: newComment,
   
  }
  let editedComment = await dispatch(changeComment(payload))
  if (editedComment) {
-
   setShowForm(false);
-  setComment()
+  // setNewComment()
+
 } 
 }
 
@@ -62,17 +63,19 @@ return (
   {showForm?
   <div>
    <section>
-
   <form onSubmit={handleSubmit}>
    <ul>
     {hasSubmitted && errors.map((error, idx) => <li key={idx}>{error}</li>)}
    </ul>
-    <input type='text' value={comment} onChange={updateComment}/>
+   <label>
+    <input type='text' value={newComment} onChange={(e)=> setNewComment(e.target.value)}/>
+   </label>
     <button type='submit'>Submit</button>
     <button type='button' onClick={handleClick}>Cancel</button>
   </form>
    </section>
- </div>:null}
+ </div>
+ :null}
  </>
 )
 }

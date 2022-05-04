@@ -21,26 +21,28 @@ const PhotoDetails =() => {
  const photo = useSelector((state) => state.photos)
  const commentObj = useSelector((state) => state.comments)
  const comments = Object.values(commentObj)
- console.log('comment', comments)
 
+ 
+ 
  const photoValue = Object.values(photo)//  console.log(photoValue)
  const [showForm, setShowForm] = useState(false);
  const [newComment, setNewComment] = useState("");
  const [errors, setErrors] = useState([])
-
-useEffect(() => {
- dispatch(getOnePhoto(id))
- dispatch(commentActions.loadAllComments())
- setShowForm(false)
-},[dispatch, id,])
-
-const handleDelete =(id) =>{
-  dispatch(deletePhoto(id))
-  history.push('/photos')
-}
-
-console.log('comment', comments)
-
+ 
+ useEffect(() => {
+   dispatch(getOnePhoto(id))
+   dispatch(commentActions.loadAllComments())
+   setShowForm(false)
+  },[dispatch, id,])
+  
+  const handleDelete =(id) =>{
+    dispatch(deletePhoto(id))
+    history.push('/photos')
+  }
+  
+  // console.log('comment', comments)
+  console.log('comment', comments[id]?.userId)
+  
 
 const commentDelete = async (e, id) =>{
   await dispatch(deleteComment(id))
@@ -49,6 +51,8 @@ const commentDelete = async (e, id) =>{
 let deleteButton =null
 let editButton=null
 let addComment=null
+let editComment= null
+let deleteComment= null
 
 
 if (sessionUser) {
@@ -56,8 +60,15 @@ if (sessionUser) {
   if (sessionUser.id === photos?.userId) {
     deleteButton = (<button className='photo-delete' onClick={() => {handleDelete(id)}}>Delete Photo</button>)
     editButton = (<PhotoEditModal/>)
-  }
+  } 
+  // if (sessionUser.id === comments[id]?.userId) {
+  //   editComment = (<EditCommentForm />)
+  //   commentDelete = (<button type='button' onClick={(e)=>commentDelete(e, comment?.id)}>Delete</button>)
+  // }
+  // (sessionUser.id ===)
 }
+
+
 
 const hideForm = (e) => {
   setShowForm(false)
@@ -75,11 +86,12 @@ console.log('filtered', filteredComments)
 
 
 
+
  return (
   <div className="photo-container">
    <div className='photo-contents'>
      <h1>{photos?.caption}</h1>
-    <img className='photo-image' src={photos?.photoUrl } alt=''/>
+      <img className='photo-image' src={photos?.photoUrl } alt=''/>
       <p className='photo-username'>
         {photos?.User?.username}
       </p>
@@ -91,18 +103,18 @@ console.log('filtered', filteredComments)
      <div className='comments-box'>
       {filteredComments?.map((comment) => (
         <div className='all-comments'key={comment?.id}>
-          <li className='comments-list'>{comment?.comment}
-
-          <EditCommentForm comments={comment}/>
-          <button type='button' onClick={(e)=>commentDelete(e, comment.id)}>Delete</button>
+          <li className='comments-list'>{comment?.comment}</li>
+          <div>
+        <EditCommentForm comments={comment}/>
+        <button type='button' onClick={(e)=>commentDelete(e, comment?.id)}>Delete</button>
+          </div>
             <p className='comment-username'>{comment?.User?.username}</p>
-          </li>
         <div/>
-     </div>
-      ))}
-      {addComment}
-     </div>
     </div>
+        ))}
+      {addComment}
+      </div>
+     </div>
   </div>
  )
 }

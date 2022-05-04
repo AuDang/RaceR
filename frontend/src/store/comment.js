@@ -1,9 +1,9 @@
 import { csrfFetch } from "./csrf";
 
-const LOAD_COMMENTS = '/photos/LOAD_COMMENTS';
-const ADD_ONE = '/photos/ADD_ONE';
-const UPDATE_ONE = 'photos/UPDATE_ONE'
-const REMOVE_ONE = '/photos/REMOVE_ONE'
+const LOAD_COMMENTS = '/comments/LOAD_COMMENTS';
+const ADD_ONE = '/comments/ADD_ONE';
+const UPDATE_ONE = 'comments/UPDATE_ONE'
+const REMOVE_ONE = '/comments/REMOVE_ONE'
 
 export const load = (comments) => ({
  type: LOAD_COMMENTS,
@@ -15,6 +15,10 @@ export const addOneComment = (comment) => ({
  comment
 })
 
+export const updateOne = (comment) => ({
+  type: UPDATE_ONE,
+  comment 
+})
 
 export const remove = (id) => ({
  type: REMOVE_ONE,
@@ -46,7 +50,7 @@ if (res.ok) {
 export const changeComment = (data) => async(dispatch) => {
 const res = await csrfFetch(`/api/comments/${data.id}`, {
   method:"PUT",
-  headers: {"ContentType": "application/json"},
+  headers: {"Content-Type": "application/json"},
   body:JSON.stringify(data)
 })
 if (res.ok) {
@@ -82,9 +86,6 @@ switch (action.type) {
   return newState
  }
 
- case UPDATE_ONE: {
-   const newState={...state, [action.comment.id]: action.comment}
- }
 
  
  case REMOVE_ONE: {
