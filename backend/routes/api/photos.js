@@ -11,11 +11,11 @@ const {singleMulterUpload, uploadFile, singlePublicFileUpload} =require('../../a
 
 const validatePhoto = [
  check('caption')
-  .exists({checkFalsy:true})
+  .exists()
   .notEmpty()
   .withMessage('Title must contain text')
-  .isLength({min:5, max:50})
-  .withMessage('Your title must be between 5 and 50 characters long'),
+  .isLength({min:5})
+  .withMessage('Your title must be longer than 5 characters'),
   handleValidationErrors
 ]
 
@@ -42,7 +42,7 @@ if (photo) {
 }
 }))
 
-router.post('/newPhoto', singleMulterUpload('photoUrl'), asyncHandler(async(req, res) => {
+router.post('/newPhoto', requireAuth, singleMulterUpload('photoUrl'), asyncHandler(async(req, res) => {
   // console.log('hello', req.file)
  const {userId, albumId, caption} = req.body
  const photoUrl = await singlePublicFileUpload (req.file)
@@ -58,8 +58,8 @@ router.post('/newPhoto', singleMulterUpload('photoUrl'), asyncHandler(async(req,
 //  return res.json(id)
 // }))
 
-router.put('/:id', validatePhoto, asyncHandler(async(req,res) => {
-  console.log('tester', req.params.id)
+router.put('/:id', validatePhoto, requireAuth,asyncHandler(async(req,res) => {
+  // console.log('tester', req.params.id)
 const parsedPhotoId = parseInt(req.params.id, 10)
 const {userId, albumId, caption} = req.body;
 const photo = await Photo.findByPk(parsedPhotoId, {include: db.User})
@@ -67,7 +67,7 @@ const newPhoto = await photo.update({userId, albumId, caption})
 return res.json(newPhoto)
 }))
 
-router.delete('/:id', asyncHandler(async(req, res) => {
+router.delete('/:id', requireAuth ,asyncHandler(async(req, res) => {
  const parsedPhotoId = parseInt(req.params.id)
  const photo = await Photo.findByPk(parsedPhotoId);
 

@@ -47,6 +47,7 @@ const handleSubmit = async (e) => {
 
   if (uploadedPhoto) {
   showModal(false)
+  setCaption()
    history.push(`/photos/${uploadedPhoto.id}`)
  }
 }
@@ -60,7 +61,7 @@ const handleCancelClick = (e) => {
    <section className='photo-edit-container'>
     <form className='photo-edit-form' onSubmit={handleSubmit}>
      <ul className='errors'>
-     {hasSubmitted && errors.map((error, idx) => (
+     {hasSubmitted && errors?.map((error, idx) => (
       <li key={idx}>{error}</li>
      ))}
      </ul>

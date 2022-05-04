@@ -11,7 +11,7 @@ const PhotoUploadModal = () => {
     <button onClick={() => setShowModal(true)}>Upload</button>
     {showModal && (
      <Modal onClose={() => setShowModal(false)}>
-      <PhotoUploadForm />
+      <PhotoUploadForm showModal={setShowModal}/>
      </Modal>
     )}
   </div>

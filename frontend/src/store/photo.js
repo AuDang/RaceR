@@ -50,7 +50,7 @@ export const getOnePhoto = (id) => async (dispatch) => {
 // }
 
 export const uploadPhoto = (data) => async(dispatch) => {
- console.log(data)
+//  console.log(data)
  const res = await csrfFetch('/api/photos/newPhoto', {
   method: "POST",
   headers: { 'Content-Type': 'multipart/form-data' },

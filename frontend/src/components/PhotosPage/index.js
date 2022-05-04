@@ -9,7 +9,7 @@ const PhotosPage = () => {
  const dispatch = useDispatch()
  const photos = useSelector((state) => state.photos)
  const photoData = Object.values(photos)
- console.log('test', photoData)
+//  console.log('test', photoData)
 
  useEffect(() => {
   dispatch(loadAllPhotos())

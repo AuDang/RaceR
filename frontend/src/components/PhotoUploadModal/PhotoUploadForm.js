@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import * as photoActions from '../../store/photo'
 
-const PhotoUploadForm = () => {
+const PhotoUploadForm = ({showModal}) => {
 const dispatch = useDispatch()
 const history = useHistory()
 
@@ -11,13 +11,14 @@ const [caption,setCaption] = useState('')
 const [photoUrl, setPhotoUrl] = useState('')
 const [errors, setErrors] = useState([])
 const [hasSubmitted, setHasSubmitted] =useState(false)
+const [showErrors, setShowErrors]= useState([])
 const sessionUser = useSelector((state) => state.session.user)
 const updateCaption = (e) => setCaption(e.target.value);
 const updatePhoto = (e) => setPhotoUrl(e.target.files[0])
 
 useEffect(() => {
  const errors = [];
- if(caption.length <1) {
+ if(caption.length ===0) {
   errors.push('Title can not be empty')
  }
  setErrors(errors)
@@ -28,7 +29,7 @@ const handleSubmit = async (e) => {
 
  setHasSubmitted(true)
 
- if(errors.length > 0) return 
+//  if(errors.length > 0) return 
  
 
 
@@ -44,6 +45,8 @@ form.append('photoUrl', photoUrl)
   // console.log(uploadedPhoto)
 
   if (uploadedPhoto) {
+  showModal(false)
+  setCaption('')
    history.push(`/photos/${uploadedPhoto.id}`)
  }
 }
@@ -57,7 +60,7 @@ return (
   <section className='add-photo-container'>
    <form className='add-photo-form' onSubmit={handleSubmit}>
     <ul className='errors'>
-     {hasSubmitted && errors.map((error, idx) => {
+     {hasSubmitted && errors?.map((error, idx) => {
       <li key={idx}>{error}</li>
      })}
     </ul>
