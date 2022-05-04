@@ -51,8 +51,9 @@ form.append('photoUrl', photoUrl)
  }
 }
 const handleCancelClick = (e) => {
+  showModal(false)
  e.preventDefault()
- history.push('/photos')
+//  history.push('/photos')
 }
 
 return (
@@ -65,7 +66,7 @@ return (
      })}
     </ul>
     <label className='title'> Add a new Photo</label>
-    <input className='add-photo-input' type='text' placeholder='Title' value={caption} onChange={updateCaption}/>
+    <input className='add-photo-input' type='text' placeholder='Title' value={caption} onChange={updateCaption} required/>
       <input type ='file' onChange={updatePhoto} accept=".jpeg, .jpg, .gif , .png"/>
       <button className='add-photo-button'type='submit'>Add Photo</button>
       <button className='cancel-button' type='button' onClick={handleCancelClick}>Cancel</button>

@@ -42,10 +42,10 @@ if (photo) {
 }
 }))
 
-router.post('/newPhoto', requireAuth, singleMulterUpload('photoUrl'), asyncHandler(async(req, res) => {
+router.post('/newPhoto', requireAuth,singleMulterUpload('photoUrl'), asyncHandler(async(req, res) => {
   // console.log('hello', req.file)
  const {userId, albumId, caption} = req.body
- const photoUrl = await singlePublicFileUpload (req.file)
+ let photoUrl = await singlePublicFileUpload (req.file)
 //  console.log('hello', photoUrl)
  const photo = await Photo.create({userId, albumId, caption, photoUrl})
  return res.json(photo)

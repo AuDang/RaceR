@@ -82,37 +82,43 @@ if (comment?.photoId === photos?.id) return true
 // console.log('user', sessionUser?.id)
 
  return (
+   <>
   <div className="photo-container">
    <div className='photo-contents'>
      <h1>{photos?.caption}</h1>
       <img className='photo-image' src={photos?.photoUrl } alt=''/>
-      <p className='photo-username'>
-        {photos?.User?.username}
-      </p>
-        {deleteButton} 
+      <p className='photo-username'></p>
+        Owner: {photos?.User?.username}
+      <div className='photo-edit-delete-container'>
         {editButton}
+        {deleteButton} 
+      </div>
+      {/* </p> */}
    </div>
-   <div className='comments-container'>
+  </div>
+  <div className='comments-container'>
+   <div className='comments-contents'>
      <p className='comments-header'>Comments</p>
      <div className='comments-box'>
       {filteredComments?.map((comment) => (
         <div className='all-comments'key={comment?.id}>
+          <p className='comment-username'>{comment.User?.username}</p>
           <li className='comments-list'>{comment?.comment}</li>
           {console.log('COMMENT', comment)}
           {sessionUser?.id === comment?.userId &&
-          <>
-          <EditCommentForm comments={comment}/>
-          <button type='button' onClick={(e)=>commentDelete(e, comment?.id)}>Delete</button>
-        </>
-        } 
-        <p className='comment-username'>{comment.User?.username}</p>
-    </div>
-        ))}
-      {addComment}
+            <div className='edit-delete-comment'>
+              <EditCommentForm comments={comment}/>
+              <button type='button' onClick={(e)=>commentDelete(e, comment?.id)}>Delete</button>
+            </div>
+            } 
+        </div>
+      ))}
+        {addComment}
       
       </div>
-     </div>
+    </div>
   </div>
+  </>
  )
 }
 

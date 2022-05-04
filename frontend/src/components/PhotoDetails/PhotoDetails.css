@@ -1,11 +1,81 @@
 .photo-container {
  display:flex;
+ flex-direction: column;
  align-items:center;
  width: 100vw;
-}
 
+}
+h1 {
+ display:flex;
+ margin-top: 100px;
+ justify-content: center;
+ color: rgb(255, 217, 0);
+}
 .photo-image {
  width:70vw;
  display:flex;
+ justify-content: center;
+}
+.photo-edit-delete-container{
+ display: flex;
+ float:right;
+ /* margin-left: 100px; */
+}
+.photo-username{
+ display: flex;
+ justify-content: space-between;
+ color: rgb(255, 217, 0);
+}
+
+.comments-container {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ font-size: 25px;
+ width: 100vw;
+ margin-top: 100px;
+ 
+}
+.comments-contents {
+ display:flex;
+ flex-direction: column;
+ align-items: center;
+ border: 2px solid;
+ width: 70vw;
+}
+
+.comments-box {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ border: 1px solid;
+ width: 70vw;
+ 
+}
+.all-comments {
+ display: flex;
+ width:90%;
+ flex-direction: column;
+ font-size: 20px;
+ /* border: 5px solid; */
+ outline: 1px solid;
+
+}
+
+.edit-delete-comment {
+display: flex;
+align-items:center;
+justify-content: flex-end;
+}
+.comments-list {
+ display:flex;
+ font-size: 25px;
+}
+.comment-username {
+ font-size: 20px;
+}
+
+.add-comment-input {
+ width: 40vw;
  justify-content: center;
 }
