@@ -57,7 +57,7 @@ let editComment
 if (sessionUser) {
   addComment =(<AddComment />)
   if (sessionUser.id === photos?.userId) {
-    deleteButton = (<button className='photo-delete' onClick={() => {handleDelete(id)}}>Delete Photo</button>)
+    deleteButton = (<button className='photo-delete-button' onClick={() => {handleDelete(id)}}>Delete Photo</button>)
     editButton = (<PhotoEditModal/>)
   } 
 
@@ -87,12 +87,13 @@ if (comment?.photoId === photos?.id) return true
    <div className='photo-contents'>
      <h1>{photos?.caption}</h1>
       <img className='photo-image' src={photos?.photoUrl } alt=''/>
-      <p className='photo-username'></p>
+      <p className='photo-username'>
         Owner: {photos?.User?.username}
       <div className='photo-edit-delete-container'>
         {editButton}
         {deleteButton} 
       </div>
+        </p>
       {/* </p> */}
    </div>
   </div>
@@ -105,12 +106,12 @@ if (comment?.photoId === photos?.id) return true
           <p className='comment-username'>{comment.User?.username}</p>
           <li className='comments-list'>{comment?.comment}</li>
           {console.log('COMMENT', comment)}
-          {sessionUser?.id === comment?.userId &&
+          {sessionUser?.id === comment?.userId && 
             <div className='edit-delete-comment'>
               <EditCommentForm comments={comment}/>
-              <button type='button' onClick={(e)=>commentDelete(e, comment?.id)}>Delete</button>
+              <button className='comment-button-delete'type='button' onClick={(e)=>commentDelete(e, comment?.id)}>Delete</button>
             </div>
-            } 
+          } 
         </div>
       ))}
         {addComment}

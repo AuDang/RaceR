@@ -30,6 +30,7 @@ function LoginForm() {
               <li key={idx}>{error}</li>
             ))}
           </ul>
+          <h2 className='login-header'>Login to RaceR </h2>
           <label>
             Username or Email
             <input
@@ -48,8 +49,8 @@ function LoginForm() {
               required
             />
           </label>
-          <div className ="login-btn">
-          <button type="submit">Log In</button>
+          <div className ="login-btn-container">
+          <button className ="login-btn"type="submit">Log In</button>
           <DemoUser />
           </ div>
         </form>

@@ -65,11 +65,13 @@ return (
       <li key={idx}>{error}</li>
      })}
     </ul>
-    <label className='title'> Add a new Photo</label>
+    <label className='title'> Add a New Photo</label>
     <input className='add-photo-input' type='text' placeholder='Title' value={caption} onChange={updateCaption} required/>
-      <input type ='file' onChange={updatePhoto} accept=".jpeg, .jpg, .gif , .png"/>
-      <button className='add-photo-button'type='submit'>Add Photo</button>
-      <button className='cancel-button' type='button' onClick={handleCancelClick}>Cancel</button>
+      <input className= 'choose-file' type ='file' onChange={updatePhoto} accept=".jpeg, .jpg, .gif , .png"/>
+        <section className='upload-add-cancel'>
+          <button className='add-photo-button'type='submit'>Add Photo</button>
+          <button className='cancel-button' type='button' onClick={handleCancelClick}>Cancel</button>
+        </section>
    </form>
   </section>
  </div>

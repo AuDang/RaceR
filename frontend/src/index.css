@@ -3,6 +3,9 @@ html {
     padding:0px;
   height:100%;
   width:100%;
+  font-family: "Comic Sans MS",
+  "Comic Sans",
+  cursive;
 }
 body {
   margin:0px;

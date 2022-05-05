@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
 import * as commentActions from '../../store/comment'
+import './AddComment.css'
 
 const AddComment = () => {
 const dispatch=useDispatch()
@@ -59,8 +60,10 @@ return (
     placeholder='Add a comment...'
     value={comment}
     onChange={updateComment}/>
+      <div className='form-buttom-container'>
       <button className='add-comment-button'type='submit'>Submit</button>
-      <button className='cancel-button' type='button' onClick={handleCancelClick}>Cancel</button>
+      <button className='cancel-comment-button' type='button' onClick={handleCancelClick}>Cancel</button>
+      </div>
   </form>
  </section>
 )

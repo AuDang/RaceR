@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { changeComment } from "../../store/comment";
 import { deleteComment } from "../../store/comment";
 import { useParams } from "react-router-dom";
+import './EditComment.css'
 
 
 const EditCommentForm = ({comments}) => {
@@ -59,7 +60,7 @@ const handleClick = (e) => {
 
 return (
  <>
-  <button type='button' onClick={() => setShowForm(!showForm)} >Edit</button>
+  <button className='comment-edit-button'type='button' onClick={() => setShowForm(!showForm)} >Edit</button>
   {showForm?
   <div>
    <section>

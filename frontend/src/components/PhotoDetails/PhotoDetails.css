@@ -9,12 +9,18 @@ h1 {
  display:flex;
  margin-top: 100px;
  justify-content: center;
+ margin-bottom: 20px;
  color: rgb(255, 217, 0);
+ text-shadow: -2px 0 black,0 2px black,2px 0 black,0 -2px black;
+ ;
 }
 .photo-image {
  width:70vw;
  display:flex;
  justify-content: center;
+ border-radius: 5%;
+ border: 1px solid rgb(255, 217, 0);
+ box-shadow: 10px 8px 8px black;
 }
 .photo-edit-delete-container{
  display: flex;
@@ -23,8 +29,16 @@ h1 {
 }
 .photo-username{
  display: flex;
+ font-size:17px;
  justify-content: space-between;
  color: rgb(255, 217, 0);
+ text-shadow: -1.5px 0 black,0 1.5px black,1.5px 0 black,0 -1.5px black;
+}
+
+.photo-delete-button{
+ color: rgb(255, 217, 0);
+ background-color: black;
+ font-size: 17px;
 }
 
 .comments-container {
@@ -42,6 +56,15 @@ h1 {
  align-items: center;
  border: 2px solid;
  width: 70vw;
+}
+.comments-header {
+color: rgb(255, 217, 0);
+font-size: 30px;
+font-weight: bolder;
+text-shadow: -2px 0 black,
+0 2px black,
+2px 0 black,
+0 -2px black;
 }
 
 .comments-box {
@@ -73,9 +96,24 @@ justify-content: flex-end;
 }
 .comment-username {
  font-size: 20px;
+ color: rgb(255, 217, 0);
+ text-shadow: -2px 0 black,
+ 0 2px black,
+ 2px 0 black,
+ 0 -2px black;
 }
 
 .add-comment-input {
  width: 40vw;
  justify-content: center;
+}
+.form-buttom-container {
+ display:flex;
+ justify-content: center
+}
+
+.comment-button-delete{
+   color: rgb(255, 217, 0);
+   background-color: black;
+   font-size: 17px;
 }
