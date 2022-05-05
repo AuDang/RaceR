@@ -1,5 +1,8 @@
 .demo-button {
     color: rgb(255, 217, 0);
     background-color: black;
-    font-size: 17px;
+    font-size: 20px;
+    border-radius: 10%;
+    outline: 2px solid rgb(255, 217, 0);
+    margin-left: 10px;
 }

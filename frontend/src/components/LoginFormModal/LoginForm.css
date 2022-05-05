@@ -11,12 +11,15 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
-  background-color: slategrey;
+  background-color: rgba(2, 3, 37, 0.925);
+
 }
 .login-btn {
     color: rgb(255, 217, 0);
     background-color: black;
-    font-size: 17px;
+    font-size: 20px;
+    border-radius: 10%;
+    outline: 2px solid rgb(255, 217, 0);
 }
 .login-btn-container {
     display: flex;
