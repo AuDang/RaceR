@@ -8,6 +8,7 @@ import PhotosPage from './components/PhotosPage'
 import PhotoDetails from "./components/PhotoDetails";
 import PhotoUploadForm from "./components/PhotoUploadModal";
 import ErrorPage from "./components/404";
+import { loadAllPhotos } from "./store/photo";
 import LoginForm from "./components/LoginFormModal/LoginForm";
 import SignupForm from "./components/SignupFormModal/SignupForm";
 
@@ -20,6 +21,7 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    dispatch(loadAllPhotos())
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
   const sessionUser = useSelector(state => state.session.user);

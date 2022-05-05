@@ -11,8 +11,8 @@ const EditCommentForm = ({comments}) => {
 const dispatch =useDispatch()
 const history =useHistory()
 const { id } = useParams();
-const [newComment, setNewComment]= useState('')
-console.log(id)
+const [newComment, setNewComment]= useState(comments.comment)
+// console.log(id)
 console.log(comments)
 const [errors, setErrors] = useState([])
 const [showForm, setShowForm] =useState(false)

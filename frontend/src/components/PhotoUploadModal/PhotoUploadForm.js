@@ -26,7 +26,6 @@ useEffect(() => {
 
 const handleSubmit = async (e) => {
  e.preventDefault()
-
  setHasSubmitted(true)
 
 //  if(errors.length > 0) return 

@@ -23,7 +23,7 @@ const photoNotFoundError = (id) => {
  const err = Error("Photo not found");
  err.errors = [`Post with id of ${id} could not be found.`];
  err.title = "Photo could not be found.";
- err.status = 404;
+ err.status = 400;
  return err
 }
 
@@ -38,7 +38,7 @@ const photo = await Photo.findByPk(req.params.id ,
 if (photo) {
  return res.json(photo);
 } else {
- next(photoNotFoundError(req.params.id))
+next(photoNotFoundError(req.params.id))
 }
 }))
 

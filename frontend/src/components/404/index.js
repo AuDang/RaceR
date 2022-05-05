@@ -1,4 +1,4 @@
-import Reacr from 'react'
+import React from 'react'
 import './404.css'
 const ErrorPage = () => {
  return (

@@ -17,7 +17,7 @@ const [hasSubmitted, setHasSubmitted] = useState(false)
 const sessionUser = useSelector((state) => state.session.user)
 const updateComment = (e) => setComment(e.target.value);
 
-console.log('user', sessionUser.username)
+// console.log('user', sessionUser.username)
 useEffect(() => {
  const errors = [];
  if(comment.length <= 0) {errors.push('Please write something...')

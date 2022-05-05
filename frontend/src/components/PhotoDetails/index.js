@@ -12,6 +12,7 @@ import { deleteComment } from '../../store/comment'
 import * as commentActions from '../../store/comment'
 import './PhotoDetails.css'
 
+
 const PhotoDetails =() => {
  const history = useHistory()
  const {id} = useParams();
@@ -22,17 +23,18 @@ const PhotoDetails =() => {
  const commentObj = useSelector((state) => state.comments)
  const comments = Object.values(commentObj)
 
- 
- 
  const photoValue = Object.values(photo)//  console.log(photoValue)
  const [showForm, setShowForm] = useState(false);
  const [newComment, setNewComment] = useState("");
  const [errors, setErrors] = useState([])
  
+if (!photos) history.push('/404')
+
  useEffect(() => {
-   dispatch(getOnePhoto(id))
+  //  dispatch(getOnePhoto(id))  
    dispatch(commentActions.loadAllComments())
    setShowForm(false)
+
   },[dispatch, id,])
   
   const handleDelete =(id) =>{
@@ -77,8 +79,8 @@ if (comment?.photoId === photos?.id) return true
 
 
 
-console.log('filtered', filteredComments)
-console.log('comments', filteredComments[id])
+// console.log('filtered', filteredComments)
+// console.log('comments', filteredComments[id])
 // console.log('user', sessionUser?.id)
 
  return (
@@ -104,7 +106,7 @@ console.log('comments', filteredComments[id])
       {filteredComments?.map((comment) => (
         <div className='all-comments'key={comment?.id}>
           <p className='comment-username'>{comment.User?.username}</p>
-          {console.log('username', comment.User?.username)}
+          {/* {console.log('username', comment.User?.username)} */}
           <li className='comments-list'>{comment?.comment}</li>
           {/* {console.log('COMMENT', comment)} */}
           {sessionUser?.id === comment?.userId && 

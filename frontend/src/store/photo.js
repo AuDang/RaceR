@@ -31,9 +31,13 @@ export const loadAllPhotos = () => async (dispatch) => {
 export const getOnePhoto = (id) => async (dispatch) => {
  const res = await csrfFetch(`/api/photos/${id}`)
  if (res.ok) {
-  const photo = await res.json()
-  dispatch(addOnePhoto(photo))
+   const photo = await res.json()
+   dispatch(addOnePhoto(photo))
+  return photo
+ } else {
+   return null
  }
+
 }
 
 // export const uploadPhoto = (data) => async(dispatch) => {

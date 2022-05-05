@@ -33,8 +33,11 @@ router.get('/', asyncHandler(async(req, res) => {
 
 router.post('/', requireAuth, asyncHandler(async(req,res) =>{ 
 const {userId, photoId, comment,} =req.body
-const newComment = await db.Comment.create({userId, photoId, comment},{
- include: db.User})
+const user = await db.User.findByPk(userId)
+// console.log(user, 'user')
+const newComment = await db.Comment.create({userId, photoId, comment},{include:db.User})
+newComment.dataValues.User = user
+ console.log('test', newComment)
  return res.json(newComment)
 }))
 

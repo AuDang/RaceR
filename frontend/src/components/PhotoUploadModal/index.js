@@ -4,7 +4,7 @@ import PhotoUploadForm from './PhotoUploadForm'
 import './PhotoUpload.css'
 
 const PhotoUploadModal = () => {
- const [showModal, setShowModal] =useState(false);
+const [showModal, setShowModal] =useState(false);
 
  return (
   <div className='upload-button'>
