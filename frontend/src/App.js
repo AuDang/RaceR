@@ -9,6 +9,7 @@ import PhotoDetails from "./components/PhotoDetails";
 import PhotoUploadForm from "./components/PhotoUploadModal";
 import ErrorPage from "./components/404";
 import { loadAllPhotos } from "./store/photo";
+import Footer from "./components/Footer/Footer";
 import LoginForm from "./components/LoginFormModal/LoginForm";
 import SignupForm from "./components/SignupFormModal/SignupForm";
 
@@ -28,6 +29,7 @@ function App() {
 
   return (
     <>
+      <Footer/>
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
