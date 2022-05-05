@@ -83,11 +83,12 @@ switch (action.type) {
  
  case ADD_ONE: {
   const newState = {...state, [action.comment.id]: action.comment};
+  console.log(newState, 'state')
+  console.log(action.comment, 'action')
   return newState
  }
 
 
- 
  case REMOVE_ONE: {
   const newState = {...state}
   delete newState[action.id]

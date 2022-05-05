@@ -11,11 +11,13 @@ const {id} = useParams()
 const photo = useSelector(state => state.photos)
 
 const [comment, setComment]= useState('')
+const [userId, setUserId]=useState('')
 const [errors, setErrors] = useState([])
 const [hasSubmitted, setHasSubmitted] = useState(false)
 const sessionUser = useSelector((state) => state.session.user)
 const updateComment = (e) => setComment(e.target.value);
 
+console.log('user', sessionUser.username)
 useEffect(() => {
  const errors = [];
  if(comment.length <= 0) {errors.push('Please write something...')
@@ -26,7 +28,6 @@ useEffect(() => {
  setErrors(errors)
 
 },[comment])
-
 const handleSubmit = async (e) => {
  e.preventDefault()
  
@@ -36,11 +37,15 @@ const handleSubmit = async (e) => {
  const payload ={
   userId: sessionUser.id,
   photoId: photo[id].id,
+  userName: sessionUser.username,
   comment,
  }
+
+
  const createdComment = await dispatch(commentActions.addComment(payload))
 if (createdComment) {
 setComment('')
+setUserId('')
 } 
 }
 const handleCancelClick = (e) => {

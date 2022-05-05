@@ -77,8 +77,8 @@ if (comment?.photoId === photos?.id) return true
 
 
 
-// console.log('filtered', filteredComments)
-// console.log('comments', filteredComments[id])
+console.log('filtered', filteredComments)
+console.log('comments', filteredComments[id])
 // console.log('user', sessionUser?.id)
 
  return (
@@ -104,8 +104,9 @@ if (comment?.photoId === photos?.id) return true
       {filteredComments?.map((comment) => (
         <div className='all-comments'key={comment?.id}>
           <p className='comment-username'>{comment.User?.username}</p>
+          {console.log('username', comment.User?.username)}
           <li className='comments-list'>{comment?.comment}</li>
-          {console.log('COMMENT', comment)}
+          {/* {console.log('COMMENT', comment)} */}
           {sessionUser?.id === comment?.userId && 
             <div className='edit-delete-comment'>
               <EditCommentForm comments={comment}/>

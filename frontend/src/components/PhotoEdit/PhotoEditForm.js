@@ -37,7 +37,7 @@ const handleSubmit = async (e) => {
 
  const payload = {
   userId:sessionUser.id,
-  caption,
+  caption: caption,
   id
 
  }
@@ -47,7 +47,7 @@ const handleSubmit = async (e) => {
 
   if (uploadedPhoto) {
   showModal(false)
-  setCaption()
+  // setCaption()
    history.push(`/photos/${uploadedPhoto.id}`)
  }
 }

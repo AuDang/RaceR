@@ -7,6 +7,7 @@ import LandingPage from "./components/LandingPage";
 import PhotosPage from './components/PhotosPage'
 import PhotoDetails from "./components/PhotoDetails";
 import PhotoUploadForm from "./components/PhotoUploadModal";
+import ErrorPage from "./components/404";
 import LoginForm from "./components/LoginFormModal/LoginForm";
 import SignupForm from "./components/SignupFormModal/SignupForm";
 
@@ -40,6 +41,8 @@ function App() {
           <Route path='/photos/newPhoto'>
             <PhotoUploadForm />
           </Route>
+          <ErrorPage />
+          <Route/>
         </Switch>
       )}
 
