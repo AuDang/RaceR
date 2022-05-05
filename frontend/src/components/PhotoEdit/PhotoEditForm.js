@@ -68,7 +68,7 @@ const handleCancelClick = (e) => {
      <label className='title'>Edit Your Photo</label>
      <input className='edit-photo-input' type='text' placeholder='Title' value={caption} onChange={updateCaption}/>
       <button className='photo-edit-button'type='submit'>Edit Photo</button>
-      <button className='cancel-button' type='button' onClick={handleCancelClick}>Cancel</button>
+      <button className='cancel-upload-button' type='button' onClick={handleCancelClick}>Cancel</button>
     </form>
    </section>
   </div>

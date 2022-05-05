@@ -70,7 +70,7 @@ return (
       <input className= 'choose-file' type ='file' onChange={updatePhoto} accept=".jpeg, .jpg, .gif , .png"/>
         <section className='upload-add-cancel'>
           <button className='add-photo-button'type='submit'>Add Photo</button>
-          <button className='cancel-button' type='button' onClick={handleCancelClick}>Cancel</button>
+          <button className='cancel-add-button' type='button' onClick={handleCancelClick}>Cancel</button>
         </section>
    </form>
   </section>

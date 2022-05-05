@@ -7,23 +7,42 @@
 .photo-edit-button {
   color: rgb(255, 217, 0);
   background-color: black;
-  font-size: 17px;
+  font-size: 17.5px;
+  border: 1px solid;
+  width: 110px;
+  display:flex;
+  justify-content: center;
+  
+}
+
+.cancel-upload-button {
+  color: rgb(255, 217, 0);
+  border:1px solid rgb(255, 217, 0);
+  margin:5px;
+  padding:2px;
+  background-color: black;
+  font-size: 17.5px;
+  width: 80px;
+  display:flex;
+  justify-content: center;
 }
 
 .edit-photo-input{
- margin-bottom: 10px;;
+ margin-bottom: 10px;
 }
+
 
 .photo-edit-container {
 width: 350px;
 height: 200px;
 display: flex;
 justify-content: center;
-background-color: slategrey;
+background-color: rgba(2, 3, 37, 0.925);
+border: 1px solid rgb(255, 217, 0);
 }
 
 .photo-edit-form {
  display: flex;
  flex-direction: column;
- justify-content: center;
+ align-items: center;
 }

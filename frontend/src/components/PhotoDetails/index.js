@@ -114,10 +114,10 @@ if (comment?.photoId === photos?.id) return true
           } 
         </div>
       ))}
-        {addComment}
       
       </div>
     </div>
+  {addComment}
   </div>
   </>
  )

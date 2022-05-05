@@ -15,23 +15,23 @@ outline: 2px solid rgb(255, 217, 0);
 
 h2 {
 display: flex;
-font-size:35px;
+font-size:50px;
+justify-content: center;
+color: rgb(255, 217, 0);
+text-shadow: -3px 0 black,
+0 3px black,
+3px 0 black,
+0 -3px black;
+}
+h5 {
+display: flex;
+font-size:25px;
 justify-content: center;
 color: rgb(255, 217, 0);
 text-shadow: -2px 0 black,
 0 2px black,
 2px 0 black,
-0 -2px black;
-}
-h5 {
-display: flex;
-font-size:17px;
-justify-content: center;
-color: rgb(255, 217, 0);
-text-shadow: -1.5px 0 black,
-0 1.5px black,
-1.5px 0 black,
-0 -1.5px black;
+0 2px black;
 }
 
 .signup-btn-container{
