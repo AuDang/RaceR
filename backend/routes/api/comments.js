@@ -10,7 +10,7 @@ const {requireAuth} = require('../../utils/auth')
 
 const validateComment = [
  check('content')
-  .exists({checkFalsy:true})
+  .exists({ checkFalsy: true })
   .notEmpty()
   .withMessage('Comment can not be empty')
   .isLength({min:5, max:250})

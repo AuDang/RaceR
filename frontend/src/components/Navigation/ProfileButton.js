@@ -31,9 +31,12 @@ function ProfileButton({ user }) {
 
   return (
     <div>
+      <div className='profile-container'>
+        Hello, {user.username}! 
       <button className="profile-btn"onClick={openMenu}>
         <i className="fas fa-user-circle" />
       </button>
+      </div>
       {showMenu && (
         <li className="profile-dropdown">
           <div className='dropdown-list'>

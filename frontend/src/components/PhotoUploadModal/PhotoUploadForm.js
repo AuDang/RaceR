@@ -66,7 +66,7 @@ return (
     </ul>
     <label className='title'> Add a New Photo</label>
     <input className='add-photo-input' type='text' placeholder='Title' value={caption} onChange={updateCaption} required/>
-      <input className= 'choose-file' type ='file' onChange={updatePhoto} accept=".jpeg, .jpg, .gif , .png"/>
+      <input className= 'choose-file' type ='file' required onChange={updatePhoto} accept=".jpeg, .jpg, .gif , .png"/>
         <section className='upload-add-cancel'>
           <button className='add-photo-button'type='submit'>Add Photo</button>
           <button className='cancel-add-button' type='button' onClick={handleCancelClick}>Cancel</button>
