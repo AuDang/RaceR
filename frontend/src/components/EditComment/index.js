@@ -69,7 +69,7 @@ return (
     {hasSubmitted && errors.map((error, idx) => <li key={idx}>{error}</li>)}
    </ul>
    <label>
-    <input type='text' value={newComment} onChange={(e)=> setNewComment(e.target.value)}/>
+    <input type='text' value={comments.comment} onChange={(e)=> setNewComment(e.target.value)}/>
    </label>
     <button type='submit'>Submit</button>
     <button type='button' onClick={handleClick}>Cancel</button>

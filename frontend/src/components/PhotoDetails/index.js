@@ -28,10 +28,10 @@ const PhotoDetails =() => {
  const [newComment, setNewComment] = useState("");
  const [errors, setErrors] = useState([])
  
-if (!photos) history.push('/404')
+if (photos===undefined) history.push('/404')
 
  useEffect(() => {
-  //  dispatch(getOnePhoto(id))  
+   dispatch(getOnePhoto(id))  
    dispatch(commentActions.loadAllComments())
    setShowForm(false)
 

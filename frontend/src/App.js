@@ -21,9 +21,11 @@ function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
 
-  useEffect(() => {
-    dispatch(loadAllPhotos())
-    dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+  useEffect(() => { 
+    (async() => {
+    await dispatch(loadAllPhotos()).then(() => setIsLoaded(true))
+    await dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+  })()
   }, [dispatch]);
   const sessionUser = useSelector(state => state.session.user);
 
