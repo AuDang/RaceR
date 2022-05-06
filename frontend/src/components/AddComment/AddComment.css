@@ -11,9 +11,16 @@
    font-size: 17px;
    margin: 5px;
 }
-.comments-container {
-  margin-bottom: 100px;
-}
+
 .add-comment-input {
   margin-bottom: 10px;
+}
+.comment-container-space {
+  padding-bottom: 70px;
+}
+
+.add-comments-container {
+  display:flex;
+  justify-content: center;
+
 }

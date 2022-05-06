@@ -53,12 +53,14 @@ const handleCancelClick = (e) => {
   history.push('/photos')
 }
 return (
- <section className='comments-container'>
+  <div className='comment-container-space'>
+
+ <section className='add-comments-container'>
   <form className='add-comment-form' onSubmit={handleSubmit}>
     <ul className='errors'>
      {hasSubmitted && errors?.map((error, idx) => {
-      <li key={idx}>{error}</li>
-     })}
+       <li key={idx}>{error}</li>
+      })}
     </ul>
     <input className='add-comment-input' 
     type='text' 
@@ -71,6 +73,7 @@ return (
       </div>
   </form>
  </section>
+    </div>
 )
 }
  export default AddComment

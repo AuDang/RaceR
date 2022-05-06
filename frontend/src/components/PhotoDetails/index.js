@@ -99,7 +99,10 @@ if (comment?.photoId === photos?.id) return true
       {/* </p> */}
    </div>
   </div>
-  <div className='comments-container'>
+  {filteredComments.length ? 
+  (
+
+    <div className='comments-container'>
    <div className='comments-contents'>
      <p className='comments-header'>Comments</p>
      <div className='comments-box'>
@@ -120,8 +123,10 @@ if (comment?.photoId === photos?.id) return true
       
       </div>
     </div>
-  {addComment}
   </div>
+      ):null
+    }
+    {addComment}
   </>
  )
 }

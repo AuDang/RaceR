@@ -48,7 +48,9 @@ h1 {
  align-items: center;
  font-size: 25px;
  width: 100vw;
- margin-top: 100px;
+ padding-top: 100px;
+ padding-bottom: 75px;
+ margin-bottom:0;
 }
 .comments-contents {
    display:flex;
@@ -56,7 +58,7 @@ h1 {
    align-items: center;
    border: 2px solid rgb(255, 217, 0);
    width: 70vw;
-   margin-bottom:300px;
+   /* margin-bottom:300px; */
 }
 .comments-header {
    color: rgb(255, 217, 0);
@@ -113,7 +115,7 @@ text-shadow: -0.5px 0 black,
 }
 
 .add-comment-input {
- margin-top: -300px;
+ /* margin-top: -300px; */
  width: 40vw;
  justify-content: center;
 }
