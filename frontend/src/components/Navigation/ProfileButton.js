@@ -39,9 +39,9 @@ function ProfileButton({ user }) {
           <div className='dropdown-list'>
           <a>{user.username}</a>
           <a>{user.email}</a>
-          <a>
-            <button className='dropdown-delete'onClick={logout}>Log Out</button>
-          </a>
+          <div className='logout-icon'>
+            <i class="fa fa-sign-out" aria-hidden="true" onClick={logout}></i>
+          </div>
           </div>
         </li>
       )}
