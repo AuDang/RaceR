@@ -37,15 +37,17 @@ const user = await db.User.findByPk(userId)
 // console.log(user, 'user')
 const newComment = await db.Comment.create({userId, photoId, comment},{include:db.User})
 newComment.dataValues.User = user
- console.log('test', newComment)
+//  console.log('test', newComment)
  return res.json(newComment)
 }))
 
-router.put('/:id',  asyncHandler(async(req,res) => {
+router.put('/:id',  requireAuth,asyncHandler(async(req,res) => {
   const {userId, photoId, comment,} =req.body
  const id = parseInt(req.params.id,10);
+ const user = await db.User.findByPk(userId)
  const findComment = await db.Comment.findByPk(id)
- const updatedComment = await findComment.update({userId, photoId, comment})
+ const updatedComment = await findComment.update({userId, photoId, comment},{include:db.User})
+ updatedComment.dataValues.User = user
  return res.json(updatedComment)
 }))
 

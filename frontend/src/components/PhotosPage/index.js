@@ -12,7 +12,7 @@ const PhotosPage = () => {
  const [username, setUsername] = useState('') 
 
 
- console.log('test', photoData)
+//  console.log('test', photoData)
 
 
 

@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
-import {getOnePhoto } from '../../store/photo'
+import {getOnePhoto, loadAllPhotos } from '../../store/photo'
 import { deletePhoto } from '../../store/photo'
 import PhotoUpload from '../PhotoUploadModal/PhotoUploadForm'
 import PhotoEditModal from '../PhotoEdit'
@@ -46,13 +46,13 @@ if (photos===undefined) history.push('/404')
   
 
 const commentDelete = async (e, id) =>{
-  await dispatch(deleteComment(id))
+await dispatch(deleteComment(id))
 }
 
 let deleteButton =null
 let editButton=null
 let addComment=null
-let editComment
+
 // let deleteComment= null
 
 
@@ -60,7 +60,7 @@ if (sessionUser) {
   addComment =(<AddComment />)
   if (sessionUser.id === photos?.userId) {
     deleteButton = (<button className='photo-delete-button' onClick={() => {handleDelete(id)}}>Delete Photo</button>)
-    editButton = (<PhotoEditModal/>)
+    editButton = (<PhotoEditModal photo={photos}/>)
   } 
 
 }

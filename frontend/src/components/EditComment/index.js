@@ -11,14 +11,14 @@ const EditCommentForm = ({comments}) => {
 const dispatch =useDispatch()
 const history =useHistory()
 const { id } = useParams();
-const [newComment, setNewComment]= useState(comments.comment)
+const [newComment, setNewComment]= useState(comments?.comment || '')
 // console.log(id)
 console.log(comments)
 const [errors, setErrors] = useState([])
 const [showForm, setShowForm] =useState(false)
 const [hasSubmitted, setHasSubmitted] = useState(false)
 const sessionUser = useSelector((state) => state.session.user)
-// const updateComment = (e) => setComment(e.target.value);
+const updateComment = (e) => setNewComment(e.target.value);
 
 useEffect(() => {
  const errors = [];
@@ -34,22 +34,24 @@ const handleSubmit = async (e) => {
  e.preventDefault()
  // setHasSubmitted(true)
 
- if(errors.length > 0) return 
+   if(errors.length > 0) return 
+   
+   
+   const payload ={
+     ...comments,
+     id: comments?.id,
+     userId: sessionUser?.id,
+     photoId: comments?.photoId ,
+     comment: newComment,
+     userName: sessionUser.username,
+     
+    }
+    let editedComment = await dispatch(changeComment(payload))
+    if (editedComment) {
+      setShowForm(false);
+      // setNewComment()
+    } 
 
- const payload ={
-  ...comments,
-  id: comments?.id,
-  userId: sessionUser?.id,
-  photoId: comments?.photoId ,
-  comment: newComment,
-  
- }
- let editedComment = await dispatch(changeComment(payload))
- if (editedComment) {
-  setShowForm(false);
-  // setNewComment()
-
-} 
 }
 
 const handleClick = (e) => {
@@ -69,7 +71,7 @@ return (
     {hasSubmitted && errors.map((error, idx) => <li key={idx}>{error}</li>)}
    </ul>
    <label>
-    <input type='text' value={comments.comment} onChange={(e)=> setNewComment(e.target.value)}/>
+    <input type='text' value={newComment} onChange={updateComment}/>
    </label>
     <button type='submit'>Submit</button>
     <button type='button' onClick={handleClick}>Cancel</button>
