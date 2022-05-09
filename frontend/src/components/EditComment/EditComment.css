@@ -3,3 +3,6 @@
     background-color: black;
     font-size: 17px;
 }
+.comment-edit-button:hover {
+    color:white
+}

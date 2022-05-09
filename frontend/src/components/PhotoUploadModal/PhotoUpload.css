@@ -9,7 +9,9 @@
  0 2px black,
  2px 0 black,
  0 -2px black;
-
+}
+.upload-button:hover {
+   color:white;
 }
 
 .button-icon {

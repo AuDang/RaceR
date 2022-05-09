@@ -37,6 +37,9 @@
  2px 0 black,
  0 -2px black;
 }
+.builds:hover {
+ color: white;
+}
 
 .modal {
  display:flex;
@@ -79,9 +82,7 @@
  border-radius:5%;
  margin-left: 10px;
 }
-/* .profile-btn:hover {
- background-color: grey;
-} */
+
 
 .profile-dropdown {
 
