@@ -52,3 +52,7 @@ outline: 2px solid rgb(255, 217, 0);
 align-items: center;
 margin-top: 10px;
 }
+
+.signup-btn-subtmit:hover {
+    color:white
+}

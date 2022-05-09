@@ -21,6 +21,9 @@
     border-radius: 10%;
     outline: 2px solid rgb(255, 217, 0);
 }
+.login-btn:hover  {
+  color:white;
+}
 
 .fa.fa-sign-in:hover {
   color: white;
