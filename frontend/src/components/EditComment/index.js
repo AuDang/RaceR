@@ -73,8 +73,8 @@ return (
    <label>
     <input type='text' value={newComment} onChange={updateComment}/>
    </label>
-    <button type='submit'>Submit</button>
-    <button type='button' onClick={handleClick}>Cancel</button>
+    <button className='edit-comment-submit'type='submit'>Submit</button>
+    <button className='edit-comment-cancel'type='button' onClick={handleClick}>Cancel</button>
   </form>
    </section>
  </div>

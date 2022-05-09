@@ -23,6 +23,9 @@
  0 -2px black;
  
 }
+.racer:hover {
+ color:white;
+}
 
 .builds {
  text-decoration: none;
@@ -83,9 +86,11 @@
  margin-left: 10px;
 }
 
+.profile-btn:hover {
+ color:white
+}
 
 .profile-dropdown {
-
  width: 175px;
  color: rgb(255, 217, 0);
  margin-top: 120px;
@@ -115,4 +120,8 @@
  font-size: 18px;
  /* display:flex;
  justify-content: center; */
+}
+
+.logout-icon:hover{
+color:white;
 }
