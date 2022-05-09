@@ -14,8 +14,8 @@ const validatePhoto = [
   .exists()
   .notEmpty()
   .withMessage('Title must contain text')
-  .isLength({min:5})
-  .withMessage('Your title must be longer than 5 characters'),
+  .isLength({min:1})
+  .withMessage('Your title must be longer than 1 characters'),
   handleValidationErrors
 ]
 
