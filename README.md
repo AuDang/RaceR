@@ -8,15 +8,9 @@ Every car enthusiest has some a certain way they want to build their car. With r
 
 
 # Index
-<h3>
-Documentation: [RaceR Wiki](https://github.com/AuDang/RaceR/wiki)
-</h3>
-<h3>
-Documentation: [RaceR DB Schema](https://github.com/AuDang/RaceR/wiki/Database-Schema)
-</h3>
-<h3>
-Documentation: [RaceR Features](https://github.com/AuDang/RaceR/wiki/Features-List)
-</h3>
+
+| [RaceR Wiki](https://github.com/AuDang/RaceR/wiki) | [RaceR DB Schema](https://github.com/AuDang/RaceR/wiki/Database-Schema) | [RaceR Features](https://github.com/AuDang/RaceR/wiki/Features-List) |
+
 
 
 # Technologies Used
