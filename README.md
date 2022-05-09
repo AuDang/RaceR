@@ -23,17 +23,17 @@ Clone the Repo
 
 `https://github.com/AuDang/RaceR.git`
 
-Install the dependencies for the backend and frontend 
+Install the dependencies for the backend and frontend folders
 
 `npm install`
 
 Add a .env file in the backend with everything from the .env example
 
-Create a POSTGRESQL user and password 
+Create a postgresql user and password 
 
 `CREATE USER racer_app WITH PASSWORD 'password' CREATEDB;`
 
-Create a database with what is used within the .env file 
+Create a database with what is included in the .env file 
 
 `CREATE DATABASE racer_db WITH OWNER racer_app;`
 
