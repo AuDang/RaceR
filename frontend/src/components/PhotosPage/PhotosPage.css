@@ -14,19 +14,20 @@
 object-fit: cover;
 width: 100%;
 height: 100%;
-/* border-radius:5%; */
-border: 1px solid rgb(255,217,0);
+/* margin-bottom: 1em; */
+border-radius: 5px;
+border: 1px solid rgb(255, 217, 0);
 color: rgb(255, 217, 0);
 box-shadow: 10px 5px 5px black;
 }
-.photo-url:hover {
- box-shadow: 10px 5px 5px white;
-}
+
 .single-photo {
 width: 300px;
 height:300px;
 }
-
+.photo-words {
+   margin-top:.25em;
+}
 
 .photoId {
 display: flex;
@@ -34,10 +35,10 @@ flex-direction: column;
 align-items: center;
 text-decoration: none;
 color: rgb(255, 217, 0);
-text-shadow: -2px 0 black,
+/* text-shadow: -2px 0 black,
 0 2px black,
 2px 0 black,
-0 -2px black;
+0 -2px black; */
 
 }
 
@@ -48,20 +49,18 @@ padding: 50px;
 align-items: center;
 padding-top: 70px;
 /* max-width: 400; */
-
 }
 
 .photo-content {
-
  font-size: 25px;
 }
 .userName {
  font-size: 20px;
  color:white;
- text-shadow: -1px 0 rgb(255, 217, 0),
+ /* text-shadow: -1px 0 rgb(255, 217, 0),
  0 1px rgb(255, 217, 0),
  1px 0 rgb(255, 217, 0),
- 0 -1px rgb(255, 217, 0);
+ 0 -1px rgb(255, 217, 0); */
 }
 
-body {background-color: rgba(2, 3, 37, 0.925);}
+body {background-color: rgb(47, 47, 65);}

@@ -3,9 +3,11 @@
     background-color: black;
     font-size: 17px;
     border: 1px solid rgb(255, 217, 0);
+    border-radius:5px;
 }
 .edit-modal-button:hover{
-  color:white
+  color:white;
+  cursor: pointer;
 }
 
 .photo-edit-button {
@@ -19,6 +21,7 @@
 }
 .photo-edit-button:hover {
   color:white;
+  cursor: pointer;
 }
 
 .cancel-upload-button {
@@ -33,7 +36,8 @@
   justify-content: center;
 }
 .cancel-upload-button:hover {
- color:white 
+ color:white; 
+cursor: pointer;
 }
 
 .edit-photo-input{

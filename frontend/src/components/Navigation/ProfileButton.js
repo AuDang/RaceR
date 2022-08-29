@@ -32,7 +32,9 @@ function ProfileButton({ user }) {
   return (
     <div>
       <div className='profile-container'>
-        Hello, {user.username}! 
+        <div className='profile-greeting'>
+          <p>Hello, {user.username}! </p>
+        </div>
       <button className="profile-btn"onClick={openMenu}>
         <i className="fas fa-user-circle" />
       </button>
@@ -42,9 +44,10 @@ function ProfileButton({ user }) {
           <div className='dropdown-list'>
           <a>{user.username}</a>
           <a>{user.email}</a>
-          <div className='logout-icon'>
-            <i class="fa fa-sign-out" aria-hidden="true" onClick={logout}></i>
-          </div>
+          {/* <div className='logout-button'> */}
+            {/* <i class="fa fa-sign-out" aria-hidden="true" onClick={logout}></i> */}
+            <button className='logout-button'onClick={logout}>Logout</button>
+          {/* </div> */}
           </div>
         </li>
       )}

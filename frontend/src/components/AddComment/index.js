@@ -65,7 +65,7 @@ return (
     <input className='add-comment-input' type='text' placeholder='Add a comment...'value={comment} required onChange={updateComment}/>
       <div className='form-buttom-container'>
       <button className='add-comment-button'type='submit'>Submit</button>
-      <button className='cancel-comment-button' type='button' onClick={handleCancelClick}>Cancel</button>
+      {/* <button className='cancel-comment-button' type='button' onClick={handleCancelClick}>Cancel</button> */}
       </div>
   </form>
  </section>

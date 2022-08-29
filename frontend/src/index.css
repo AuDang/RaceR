@@ -27,7 +27,29 @@ body {
   overflow-x: hidden;
 }
 
-/* #header {
-  padding: 30px;
-  width: 100%; */
-/* } */
+.error-container {
+  display: flex;
+  justify-content: center;
+  margin-left: 5px;
+}
+
+.form-error-container {
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid red; */
+  border-radius: 5px;
+  width: 308px;
+  margin: 5px 0px 10px 3px;
+  padding: 10px 0px 10px 0px;
+  background-color: rgba(235, 238, 67, 0.192);
+  color: rgb(255, 217, 0)
+}
+.error-title {
+  font-size: 1.20em;
+  margin-left: 5px;
+}
+
+.error-list {
+  margin-left: 5px;
+}

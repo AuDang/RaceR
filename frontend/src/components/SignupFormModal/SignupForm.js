@@ -25,50 +25,62 @@ function SignupForm() {
           if (data && data.errors) setErrors(data.errors);
         });
     }
-    return setErrors(['Confirm Password field must be the same as the Password field']);
+    return setErrors(['Passwords don\'t match']);
   };
 
   return (
     <div className='container'>
       <div className='form-container'>
     <form onSubmit={handleSubmit}>
-      <h2>Sign Up</h2>
-      <h5>It's quick and easy</h5>
-      <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-      </ul>
+      <h2 className='signup-header'>Sign up for RaceR</h2>
+        <div className='error-container'>
+          {errors.length > 0 && (
+            <div className='form-error-container'>
+              <span className="error-title">The following errors occured:</span>
+              {/* <ul className='signin-form-errors'> */}
+              {errors.map((error, ind) => (
+                <li className='error-list' key={ind}>{error}</li>
+              ))}
+              {/* </ul> */}
+            </div>
+          )}
+        </div>
       <label>
-        Email
+        {/* Email */}
         <input
           type="text"
           value={email}
+          placeholder='Email'
           onChange={(e) => setEmail(e.target.value)}
           required
         />
       </label>
       <label>
-        Username
+        {/* Username */}
         <input
           type="text"
           value={username}
+          placeholder='Username'
           onChange={(e) => setUsername(e.target.value)}
           required
         />
       </label>
       <label>
-        Password
+        {/* Password */}
         <input
           type="password"
           value={password}
+          placeholder='Password'
           onChange={(e) => setPassword(e.target.value)}
           required
         />
       </label>
       <label>
-        Confirm Password
+        {/* Confirm Password */}
         <input
           type="password"
           value={confirmPassword}
+          placeholder='Confirm Password'
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
         />

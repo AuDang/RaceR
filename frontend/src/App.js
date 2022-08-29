@@ -10,8 +10,7 @@ import PhotoUploadForm from "./components/PhotoUploadModal";
 import ErrorPage from "./components/404";
 import { loadAllPhotos } from "./store/photo";
 import Footer from "./components/Footer/Footer";
-import LoginForm from "./components/LoginFormModal/LoginForm";
-import SignupForm from "./components/SignupFormModal/SignupForm";
+
 
 import { useSelector } from 'react-redux'
 

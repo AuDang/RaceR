@@ -8,8 +8,8 @@ function LoginFormModal() {
 
   return (
     <div className='log-in-icon'>
-      <i class="fa fa-sign-in" aria-hidden="true" onClick={() => setShowModal(true)} ></i>
-      {/* <button onClick={() => setShowModal(true)}>Log In</button> */}
+      {/* <i class="fa fa-sign-in" aria-hidden="true" onClick={() => setShowModal(true)} ></i> */}
+      <button  className='sign-in-button' onClick={() => setShowModal(true)}>Log In</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <LoginForm />

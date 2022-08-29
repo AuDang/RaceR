@@ -1,6 +1,6 @@
 const AWS = require("aws-sdk");
 // name of your bucket here
-const NAME_OF_BUCKET = "raceer-bucket";
+const NAME_OF_BUCKET = "raceerr-bucket";
 
 const multer = require("multer");
 

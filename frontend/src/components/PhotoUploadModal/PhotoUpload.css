@@ -12,13 +12,13 @@
 }
 .upload-button:hover {
 color:white;
+cursor:pointer
 }
 
 .button-icon {
  background-color: transparent;
  display:flex;
 }
-
 
 .add-photo-container {
  display: flex;
@@ -62,10 +62,11 @@ color: rgb(255, 217, 0);
 background-color: black;
 font-size: 18px;
 border: 1px solid rgb(255, 217, 0);
-border-radius: 5%;
+border-radius: 5px;
 }
 .add-photo-button:hover {
-color:white
+color:white;
+cursor: pointer;
 }
 
 
@@ -75,9 +76,11 @@ margin-left:20px;
 background-color: black;
 font-size: 18px;
 border: 1px solid rgb(255, 217, 0);
+border-radius: 5px;
 }
 .cancel-add-button:hover {
-color:white
+color:white;
+cursor: pointer;
 }
 .choose-file {
 /* margin-left:100px; */

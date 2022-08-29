@@ -25,6 +25,7 @@
 }
 .racer:hover {
  color:white;
+cursor: pointer;
 }
 
 .builds {
@@ -42,6 +43,7 @@
 }
 .builds:hover {
  color: white;
+cursor: pointer;
 }
 
 .modal {
@@ -80,14 +82,22 @@
 .profile-btn {
  color: rgb(255, 217, 0);
  background-color: rgb(0, 0, 0);
- font-size: 20px;
+ font-size: 1.5em;
  margin-right:20px;
- border-radius:5%;
+ border-radius: 5px;  
  margin-left: 10px;
 }
 
 .profile-btn:hover {
- color:white
+ color:white;
+ cursor:pointer;
+}
+.profile-greeting {
+   display:flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 1.1em;
+   font-weight:500
 }
 
 .profile-dropdown {
@@ -113,15 +123,85 @@
  0 -1px black;
 }
 
-.logout-icon {
+.logout-button {
  color: rgb(255, 217, 0);
- padding:2px;
  background-color: black;
- font-size: 18px;
- /* display:flex;
- justify-content: center; */
+ text-size-adjust: 1em;
+ all:unset;
+ justify-content: center
 }
 
-.logout-icon:hover{
+.logout-button:hover{
 color:white;
+cursor:pointer;
 }
+.search-container {
+   height: 30px;
+   position: relative;
+}
+
+::placeholder {
+   color:rgb(255, 217, 0);
+}
+
+.fa.fa-seasrch {
+   color:red;
+   z-index: 1000;
+}
+.search-input {
+   all: unset;
+   height: 30px;
+   width: 30vw;
+   border: 1px solid rgb(255, 217, 0);
+   color:rgb(255, 217, 0);
+   /* border-radius: 20px; */
+   text-align: center;
+   z-index: 1;
+}
+
+.search-input:selection {
+   background-color: #1a1d21;
+}
+
+.search-results {
+   background-color: black;
+   border: 1px solid rgb(255, 217, 0);;
+   color: rgb(255, 217, 0);
+   z-index: 1000;
+   margin-top: 1.5em;
+   border-radius: 10px;
+   list-style-type: none
+}
+.search-results li  {
+   list-style-type: none;
+}
+
+.search-results-none {
+   font-size: 1.1em;
+   margin: .3em 0 .3em 0;
+}
+
+.search-result-text {
+   all: unset;
+   cursor: pointer;
+   width: 100%
+}
+
+.search-results-item {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: space-between;
+   margin: 10px 0px;
+   min-height: 47px;
+   padding: 0px 6px;
+}
+
+
+.search-results-item:hover {
+   background-color: rgba(255, 255, 255, 0.26);
+}
+
+/* li {
+   list-style-type: none;
+} */

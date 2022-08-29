@@ -6,6 +6,7 @@ import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import './Navigation.css';
 import PhotoUploadModal from '../PhotoUploadModal';
+import SearchInput from '../Search/SearchInput';
 // import CreatePostForm from '../CreatePostForm';
 
 function Navigation({ isLoaded }) {
@@ -41,6 +42,7 @@ function Navigation({ isLoaded }) {
             {uploadButton}
             {/* <PhotoUploadModal className='modal'/> */}
           </div>
+            <SearchInput/>
             {isLoaded && sessionLinks}
         </li>
       </ul>

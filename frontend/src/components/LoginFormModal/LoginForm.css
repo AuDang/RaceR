@@ -1,39 +1,49 @@
-.container {
+/* .container {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: solid rgb(255, 217, 0);;
-
-}
+    border-radius: 10px;
+} */
 
 .form-container {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
-  background-color: rgba(2, 3, 37, 0.925);
-
+  background-color: rgb(47, 47, 65);
+  outline: 2px solid rgb(255, 217, 0);
+  border:unset;
+  /* border-radius: 10px; */
 }
+
+
 .login-btn {
     color: rgb(255, 217, 0);
     background-color: black;
     font-size: 20px;
-    border-radius: 10%;
+    border-radius: 5px;
     outline: 2px solid rgb(255, 217, 0);
 }
 .login-btn:hover  {
   color:white;
+  cursor: pointer;
 }
 
 .fa.fa-sign-in:hover {
   color: white;
+  cursor: pointer;
 }
 .login-btn-container {
     display: flex;
     justify-content: center;
+    margin-top: 1em;
 }
 .login-header {
+  display: flex;
+  justify-content: center;
+  color:rgb(255, 217, 0);
   margin-bottom: 10px;
+  font-size: 2.5em;
 }
 
 label{
@@ -45,10 +55,10 @@ label{
     margin-bottom: 5px;
     color: rgb(255, 217, 0);
     font-weight:bolder;
-    text-shadow: -1.5px 0 black,
+    /* text-shadow: -1.5px 0 black,
     0 1.5px black,
     1.5px 0 black,
-    0 -1.5px black;
+    0 -1.5px black; */
 }
 
 input {
@@ -58,11 +68,9 @@ input {
   font-size: 20px;
   align-items: center;
   border:1px solid;
+  border-radius: 5px;
   color: rgb(255, 217, 0);
-  text-shadow: -1px 0 black,
-    0 1px black,
-    1px 0 black,
-    0 -1px black;
+  margin-top:.5em;
   background-color: black;
 }
 
@@ -79,8 +87,18 @@ input {
   align-items: center;
   padding-right: 15px;
   color: rgb(255, 217, 0);
-  text-shadow: -2px 0 black,
-  0 2px black,
-  2px 0 black,
-  0 -2px black;
+}
+
+.sign-in-button {
+  font-size: .70em;
+  font-weight: bolder;
+  background-color: black;
+  color: rgb(255, 217, 0);
+  border-radius: 5px;
+  border:unset
+}
+
+.sign-in-button:hover {
+color: white;
+cursor: pointer;
 }

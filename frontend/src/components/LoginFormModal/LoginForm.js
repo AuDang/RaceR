@@ -25,33 +25,42 @@ function LoginForm() {
     <div className='container'>
       <div className='form-container'>
         <form onSubmit={handleSubmit}>
-          <ul>
-            {errors.map((error, idx) => (
-              <li key={idx}>{error}</li>
-            ))}
-          </ul>
           <h2 className='login-header'>Login to RaceR </h2>
+            <div className='error-container'>
+              {errors.length > 0 && (
+                <div className='form-error-container'>
+                  <span className="error-title">The following errors occured:</span>
+                  {/* <ul className='signin-form-errors'> */}
+                  {errors.map((error, ind) => (
+                    <li className='error-list' key={ind}>{error}</li>
+                  ))}
+                  {/* </ul> */}
+                </div>
+              )}
+            </div>
           <label>
-            Username or Email
+            {/* Username or Email */}
             <input
               type="text"
               value={credential}
+              placeholder='Username/Email'
               onChange={(e) => setCredential(e.target.value)}
               required
             />
           </label>
           <label>
-            Password
+            {/* Password */}
             <input
               type="password"
               value={password}
+              placeholder='Password'
               onChange={(e) => setPassword(e.target.value)}
               required
             />
           </label>
           <div className ="login-btn-container">
-          <button className ="login-btn"type="submit">Log In</button>
-          <DemoUser />
+            <button className ="login-btn"type="submit">Log In</button>
+            <DemoUser />
           </ div>
         </form>
       </div>

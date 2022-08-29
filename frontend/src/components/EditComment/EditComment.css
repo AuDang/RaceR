@@ -2,9 +2,11 @@
 color: rgb(255, 217, 0);
 background-color: black;
 font-size: 17px;
+border-radius: 5px;
 }
 .comment-edit-button:hover {
-color:white
+color:white;
+cursor: pointer;
 }
 
 .edit-comment-submit {
@@ -18,6 +20,7 @@ margin-right: 5px;
 
 .edit-comment-submit:hover {
 color: white;
+cursor: pointer;
 }
 
 .edit-comment-cancel {

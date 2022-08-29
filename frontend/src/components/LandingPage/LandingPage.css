@@ -14,23 +14,32 @@
  background-repeat: no-repeat;
  font-size: 30px;
 }
-.signupbutton-landing {
-  list-style: none;
-
-}
 
 .landing-page-text {
  display: flex;
  justify-content: center;
  color: rgb(255,217,0);
  font-weight: bolder;
-text-shadow: -2px 0 black,
-0 2px black,
-2px 0 black,
-0 -2px black;
-
+ text-shadow: 8px 8px 8px black
 }
 
+.landing-button {
+  display: flex;
+  justify-content: center;
+}
+.splash-signup {
+  margin-top:3em;
+  height:2.75em;
+  font-size: .75em;
+  width:9em;
+  border-radius: 5px;
+  border:unset;
+  font-weight: 600;
+  /* color: rgb(255,217,0) */
+}
+.splash-signup:hover {
+  cursor:pointer;
+}
 .landing-page-texts {
   display: flex;
   justify-content: center;
@@ -38,8 +47,5 @@ text-shadow: -2px 0 black,
   font-size: 25px;
   font-weight: bolder;
 
-  text-shadow: -2px 0 black,
-  0 2px black,
-  2px 0 black,
-  0 -2px black;
+  text-shadow: 8px 8px 10px black
 }
