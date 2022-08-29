@@ -32,6 +32,7 @@ router.get('/', asyncHandler(async(req,res) => {
  res.json(photos)
 }))
 
+
 router.get('/:id', asyncHandler(async(req, res, next) => {
 const photo = await Photo.findByPk(req.params.id , 
  {include: [{model: db.User}, {model: db.Comment}]})

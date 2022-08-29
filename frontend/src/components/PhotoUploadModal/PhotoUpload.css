@@ -21,17 +21,13 @@ cursor:pointer
  display: flex;
  width: 500px;
  height: 250px;
- background-color: rgba(2, 3, 37, 0.925);
+ background-color: rgb(47, 47, 65);
  border: 2px solid rgb(255, 217, 0)
 
 }
 .title {
 color:rgb(255, 217, 0);
 font-size: 30px;
- text-shadow: -2px 0 black,
- 0 2.5px black,
- 2.5px 0 black,
- 0 -2px black;
  padding-bottom: 10px;
 }
 
@@ -60,6 +56,7 @@ background-color: black;
 font-size: 18px;
 border: 1px solid rgb(255, 217, 0);
 border-radius: 5px;
+margin-top:1em;
 }
 .add-photo-button:hover {
 color:white;
@@ -74,6 +71,7 @@ background-color: black;
 font-size: 18px;
 border: 1px solid rgb(255, 217, 0);
 border-radius: 5px;
+margin-top: 1em;
 }
 .cancel-add-button:hover {
 color:white;
