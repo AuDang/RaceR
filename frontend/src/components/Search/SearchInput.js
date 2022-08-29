@@ -14,9 +14,8 @@ const SearchInput = () => {
    const icon = (<i className="fa fa-search" aria-hidden="true"></i>)
 
    return (
-      <div className='search-container' onMouseLeave={e=>e.stopPropagation()}>
+      <div className='search-container'>
          {<div>
-         {icon}
             <input
             className='search-input'
             placeholder='Search photos...'

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
+import PhotoUploadModal from "../PhotoUploadModal";
 import * as sessionActions from '../../store/session';
 import './Navigation.css'
 
@@ -32,9 +33,9 @@ function ProfileButton({ user }) {
   return (
     <div>
       <div className='profile-container'>
-        <div className='profile-greeting'>
+        {/* <div className='profile-greeting'>
           <p>Hello, {user.username}! </p>
-        </div>
+        </div> */}
       <button className="profile-btn"onClick={openMenu}>
         <i className="fas fa-user-circle" />
       </button>

@@ -28,7 +28,7 @@ const PhotosPage = () => {
  return (
   <div className="photos-container">
    <div className='photo-card'>
-    {photoData?.map((photo) => (
+    {photoData?.reverse().map((photo) => (
      <>
       <div className='photos' key={photo.id}>
        <NavLink className='photoId' key={photo.id}  to={`/photos/${photo.id}`}>

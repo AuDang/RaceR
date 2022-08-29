@@ -15,13 +15,15 @@ function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
   let uploadButton
   let sessionLinks;
+
   if (sessionUser) {
     sessionLinks = (
-      <div>
-      <ProfileButton user={sessionUser} />
+      <div className='nav-left'>
+        <PhotoUploadModal/>
+        <ProfileButton user={sessionUser} />
       </div>
     );
-      uploadButton =(<PhotoUploadModal/>)
+    // uploadButton =(<PhotoUploadModal/>)
 
   } else {
     sessionLinks = (
@@ -38,8 +40,7 @@ function Navigation({ isLoaded }) {
         <li className="navbar-li">
           <div className="nav-links">
             <NavLink className="racer" exact to="/">RaceR</NavLink>
-            <NavLink className="builds" to="/photos">Builds</NavLink>
-            {uploadButton}
+            <NavLink className="explore" to="/photos">Explore</NavLink>
             {/* <PhotoUploadModal className='modal'/> */}
           </div>
             <SearchInput/>
