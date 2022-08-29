@@ -24,6 +24,7 @@ cursor: pointer;
     color:rgb(255, 217, 0);
     margin-bottom: 10px;
     font-size: 2.5em;
+    text-shadow: 8px 8px 10px black;
 }
 
 .signup-btn-container{
