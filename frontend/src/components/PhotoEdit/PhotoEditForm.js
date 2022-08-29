@@ -67,12 +67,24 @@ const handleCancelClick = (e) => {
   <div>
    <section className='photo-edit-container'>
     <form className='photo-edit-form' onSubmit={handleSubmit}>
-     <ul className='errors'>
+     {/* <ul className='errors'>
      {hasSubmitted && errors?.map((error, idx) => (
       <li key={idx}>{error}</li>
      ))}
-     </ul>
+     </ul> */}
      <label className='title'>Edit Your Photo</label>
+        <div className='error-container'>
+          {errors.length > 0 && (
+            <div className='form-error-container'>
+              <span className="error-title">The following errors occured:</span>
+              {/* <ul className='signin-form-errors'> */}
+              {errors.map((error, ind) => (
+                <li className='error-list' key={ind}>{error}</li>
+              ))}
+              {/* </ul> */}
+            </div>
+          )}
+        </div>
      <input className='edit-photo-input' type='text' placeholder='Title' value={caption} required onChange={updateCaption}/>
       <div className='edit-buttons'>
         <button className='photo-edit-button'type='submit'>Edit</button>

@@ -50,12 +50,12 @@ cursor: pointer;
 }
 .edit-buttons {
   display:flex;
-  margin-top:1em;
+  margin:1em 0 1em 0;
 }
 
 .photo-edit-container {
 width: 350px;
-height: 200px;
+/* height: 200px; */
 display: flex;
 justify-content: center;
 background-color: rgb(47, 47, 65);

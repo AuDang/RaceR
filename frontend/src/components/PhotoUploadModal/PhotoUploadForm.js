@@ -59,12 +59,24 @@ return (
  <div>
   <section className='add-photo-container'>
    <form className='add-photo-form' onSubmit={handleSubmit}>
-    <ul className='errors'>
+    {/* <ul className='errors'>
      {hasSubmitted && errors?.map((error, idx) => {
       <li key={idx}>{error}</li>
      })}
-    </ul>
+    </ul> */}
     <label className='title'> Add a New Photo</label>
+        <div className='error-container'>
+          {errors.length > 0 && (
+            <div className='form-error-container'>
+              <span className="error-title">The following errors occured:</span>
+              {/* <ul className='signin-form-errors'> */}
+              {errors.map((error, ind) => (
+                <li className='error-list' key={ind}>{error}</li>
+              ))}
+              {/* </ul> */}
+            </div>
+          )}
+        </div>
     <input className='add-photo-input' type='text' placeholder='Title' value={caption} onChange={updateCaption} required/>
       <input className= 'choose-file' type ='file' required onChange={updatePhoto} accept=".jpeg, .jpg, .gif , .png"/>
         <section className='upload-add-cancel'>

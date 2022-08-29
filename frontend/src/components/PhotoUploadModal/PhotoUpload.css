@@ -20,7 +20,7 @@ cursor:pointer
 .add-photo-container {
  display: flex;
  width: 500px;
- height: 250px;
+ /* height: 350px; */
  background-color: rgb(47, 47, 65);
  border: 2px solid rgb(255, 217, 0)
 
@@ -43,6 +43,7 @@ font-size: 30px;
 display: flex;
 padding-top:10px;
 justify-content: space-between;
+margin-bottom:2em;
 }
 
 .add-photo-input {
