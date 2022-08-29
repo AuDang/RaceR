@@ -15,7 +15,10 @@
   background-color: black;
   font-size: 17.5px;
   border: 1px solid;
-  width: 110px;
+  border-radius: 5px;
+  width: 80px;
+  margin: 5px;
+  height:25px;
   display:flex;
   justify-content: center;
 }
@@ -30,8 +33,10 @@
   margin:5px;
   padding:2px;
   background-color: black;
+  border-radius: 5px;
   font-size: 17.5px;
   width: 80px;
+  height: 25px;
   display:flex;
   justify-content: center;
 }
@@ -43,14 +48,17 @@ cursor: pointer;
 .edit-photo-input{
  margin-bottom: 10px;
 }
-
+.edit-buttons {
+  display:flex;
+  margin-top:1em;
+}
 
 .photo-edit-container {
 width: 350px;
 height: 200px;
 display: flex;
 justify-content: center;
-background-color: rgba(2, 3, 37, 0.925);
+background-color: rgb(47, 47, 65);
 border: 1px solid rgb(255, 217, 0);
 }
 

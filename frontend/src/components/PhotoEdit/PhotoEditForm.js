@@ -74,8 +74,10 @@ const handleCancelClick = (e) => {
      </ul>
      <label className='title'>Edit Your Photo</label>
      <input className='edit-photo-input' type='text' placeholder='Title' value={caption} required onChange={updateCaption}/>
-      <button className='photo-edit-button'type='submit'>Edit Photo</button>
-      <button className='cancel-upload-button' type='button' onClick={handleCancelClick}>Cancel</button>
+      <div className='edit-buttons'>
+        <button className='photo-edit-button'type='submit'>Edit</button>
+        <button className='cancel-upload-button' type='button' onClick={handleCancelClick}>Cancel</button>
+      </div>
     </form>
    </section>
   </div>
