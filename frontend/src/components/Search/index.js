@@ -39,7 +39,11 @@ const Search = ({query, setQuery, setSearchResults}) => {
               setSearchResults(false)
               setQuery('')
             }}>
+               <div className='search-pic-name'>
+                  {/* {console.log('photo', photo.photoUrl)} */}
+                  <img className='search-results-image'src={photo.photoUrl}/>
               {formatResult(photo?.caption)}
+               </div>
             </NavLink>
           </div>
         </li>)

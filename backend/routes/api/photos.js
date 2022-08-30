@@ -11,7 +11,6 @@ const {singleMulterUpload, uploadFile, singlePublicFileUpload} =require('../../a
 
 const validatePhoto = [
  check('caption')
-  .exists()
   .notEmpty()
   .withMessage('Title must contain text')
   .isLength({min:1})
@@ -43,7 +42,7 @@ next(photoNotFoundError(req.params.id))
 }
 }))
 
-router.post('/newPhoto', requireAuth,singleMulterUpload('photoUrl'), asyncHandler(async(req, res) => {
+router.post('/newPhoto', validatePhoto,requireAuth,singleMulterUpload('photoUrl'), asyncHandler(async(req, res) => {
   // console.log('hello', req.file)
  const {userId, albumId, caption} = req.body
  let photoUrl = await singlePublicFileUpload (req.file)

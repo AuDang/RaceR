@@ -1,67 +1,73 @@
 .photo-container {
- display:flex;
- flex-direction: column;
- align-items:center;
- width: 100vw;
- padding-bottom: 75px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 100vw;
+   padding-bottom: 75px;
 }
+
 h1 {
- display:flex;
- margin-top: 100px;
- justify-content: center;
- margin-bottom: 20px;
- color: rgb(255, 217, 0);
- text-shadow: 8px 8px 8px black
-
+   display: flex;
+   margin-top: 100px;
+   justify-content: center;
+   margin-bottom: 20px;
+   color: rgb(255, 217, 0);
+   text-shadow: 8px 8px 8px black
 }
+
 .photo-image {
- width:70vw;
- display:flex;
- justify-content: center;
- /* border-radius: 5%; */
+   width: 70vw;
+   display: flex;
+   justify-content: center;
+   /* border-radius: 5%; */
    border-radius: 5px;
- border: 2px solid rgb(255, 217, 0);
- box-shadow: 10px 8px 8px black;
-}
-.photo-edit-delete-container{
- display: flex;
- float:right;
- /* margin-left: 100px; */
-}
-.photo-username{
- margin-top: 20px;
- display: flex;
- font-size:17px;
- justify-content: space-between;
- color: rgb(255, 217, 0);
- /* text-shadow: -1.5px 0 black,0 1.5px black,1.5px 0 black,0 -1.5px black; */
+   border: 2px solid rgb(255, 217, 0);
+   box-shadow: 10px 8px 8px black;
 }
 
-.photo-delete-button{
- color: rgb(255, 217, 0);
- background-color: black;
- font-size: 17px;
- margin-left:5px;
- border: 1px solid rgb(255, 217, 0);
-border-radius: 5px;
+.photo-edit-delete-container {
+   display: flex;
+   float: right;
+   /* margin-left: 100px; */
 }
+
+.photo-username {
+   margin-top: 20px;
+   display: flex;
+   font-size: 17px;
+   font-weight: 450;
+   justify-content: space-between;
+   color: rgb(255, 217, 0);
+   /* text-shadow: -1.5px 0 black,0 1.5px black,1.5px 0 black,0 -1.5px black; */
+}
+
+.photo-delete-button {
+   color: rgb(255, 217, 0);
+   background-color: black;
+   font-size: 17px;
+   margin-left: 5px;
+   border: 1px solid rgb(255, 217, 0);
+   border-radius: 5px;
+}
+
 .photo-delete-button:hover {
-   color:white;
+   color: white;
    cursor: pointer;
 }
 
 .comments-container {
- display: flex;
- flex-direction: column;
- align-items: center;
- font-size: 25px;
- width: 100vw;
- padding-top: 100px;
- padding-bottom: 75px;
- margin-bottom:0;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   font-size: 25px;
+   width: 100vw;
+   padding-top: 100px;
+   padding-bottom: 75px;
+   margin-bottom: 0;
 }
+
 .comments-contents {
-   display:flex;
+   display: flex;
    flex-direction: column;
    align-items: center;
    border: 1.5px solid rgb(255, 217, 0);
@@ -69,11 +75,12 @@ border-radius: 5px;
    width: 70vw;
    /* margin-bottom:300px; */
 }
+
 .comments-header {
    color: rgb(255, 217, 0);
    font-size: 30px;
    font-weight: bolder;
-   margin:.5em 0 0 0;
+   margin: .5em 0 0 0;
    /* text-shadow: -2px 0 black,
    0 2px black,
    2px 0 black,
@@ -81,77 +88,81 @@ border-radius: 5px;
 }
 
 .comments-box {
- min-height: 500px;
- display: flex;
- flex-direction: column;
- align-items: center;
- /* border: 2px solid rgb(255, 217, 0); */
- width: 70vw;
+   min-height: 500px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   /* border: 2px solid rgb(255, 217, 0); */
+   width: 70vw;
 
- 
+
 }
+
 .all-comments {
- display: flex;
- width:95%;
- flex-direction: column;
- font-size: 20px;
- border: 1px solid rgb(255, 217, 0);
- background-color: rgba(0, 0, 0, 0.397);
-border-radius: 5px;
- margin:20px;
- /* padding:0 20px 0 20px; */
+   display: flex;
+   width: 95%;
+   flex-direction: column;
+   font-size: 20px;
+   border: 1px solid rgb(255, 217, 0);
+   background-color: rgba(0, 0, 0, 0.397);
+   border-radius: 5px;
+   margin: 20px;
+   /* padding:0 20px 0 20px; */
 
 }
 
 .edit-delete-comment {
-display: flex;
-align-items:center;
-justify-content: flex-end;
-margin: 0 .5em .5em .5em;
-border-radius: 5px;
+   display: flex;
+   align-items: center;
+   justify-content: flex-end;
+   margin: 0 .5em .5em .5em;
+   border-radius: 5px;
 }
-/* .edit-delete-comment:hover {
 
+/* .edit-delete-comment:hover {
 } */
 .comments-list {
- display:flex;
- font-size: 20px;
- color:white;
- margin: 0 1em .5em 1em;
-/* text-shadow: -0.5px 0 black,
+   display: flex;
+   font-size: 20px;
+   color: white;
+   margin: 0 1em .5em 1em;
+   /* text-shadow: -0.5px 0 black,
 0 0.5px rgb(255, 217, 0) ,
 0.5px 0 rgb(255, 217, 0),
 0 -0.5px rgb(255, 217, 0); */
 
 }
+
 .comment-username {
- font-size: 20px;
- color: rgb(255, 217, 0);
- margin:.5em 1em 0 1em;
- /* text-shadow: -2px 0 black,
+   font-size: 20px;
+   color: rgb(255, 217, 0);
+   margin: .5em 1em 0 1em;
+   /* text-shadow: -2px 0 black,
  0 2px black,
  2px 0 black,
  0 -2px black; */
 }
 
 .add-comment-input {
- /* margin-top: -300px; */
- width: 40vw;
- justify-content: center;
-}
-.form-buttom-container {
- display:flex;
- justify-content: center
+   /* margin-top: -300px; */
+   width: 40vw;
+   justify-content: center;
 }
 
-.comment-button-delete{
-color: rgb(255, 217, 0);
-background-color: black;
-font-size: 17px;
-margin-left: 5px;
-border-radius: 5px;
+.form-buttom-container {
+   display: flex;
+   justify-content: center
 }
-.comment-button-delete:hover{
+
+.comment-button-delete {
+   color: rgb(255, 217, 0);
+   background-color: black;
+   font-size: 17px;
+   margin-left: 5px;
+   border-radius: 5px;
+}
+
+.comment-button-delete:hover {
    color: white;
    cursor: pointer;
 }

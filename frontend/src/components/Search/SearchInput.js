@@ -4,14 +4,16 @@ import Search from '.';
 const SearchInput = () => {
    const [query, setQuery] = useState("")
    const [searchResults, setSearchResults] = useState(false)
-
+   const handleBlur = () => {
+      setSearchResults(false)
+      setQuery('')
+   }
 
    useEffect(() => {
       if (!query.length) return setSearchResults(false)
       setSearchResults(true)
    }, [query])
 
-   const icon = (<i className="fa fa-search" aria-hidden="true"></i>)
 
    return (
       <div className='search-container'>
@@ -21,8 +23,9 @@ const SearchInput = () => {
             placeholder='Search photos...'
             value={query}
             onChange={e=> setQuery(e.target.value)}
-            onClick={e=> e.stopPropagation}/>
-            
+            onClick={e=> e.stopPropagation}
+            onBlur={()=> setTimeout(handleBlur,1000)}
+            />            
             {searchResults && <Search query={query} setQuery={setQuery} setSearchResults={setSearchResults}/>}
          </div>}
 

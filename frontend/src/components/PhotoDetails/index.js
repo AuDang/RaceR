@@ -89,13 +89,13 @@ if (comment?.photoId === photos?.id) return true
    <div className='photo-contents'>
      <h1>{photos?.caption}</h1>
       <img className='photo-image' src={photos?.photoUrl } alt=''/>
-      <p className='photo-username'>
-        Owner: {photos?.User?.username}
-      <div className='photo-edit-delete-container'>
-        {editButton}
-        {deleteButton} 
-      </div>
-        </p>
+      <h3 className='photo-username'>
+        Posted by: {photos?.User?.username}
+        <div className='photo-edit-delete-container'>
+          {editButton}
+          {deleteButton} 
+        </div>
+      </h3>
       {/* </p> */}
    </div>
   </div>

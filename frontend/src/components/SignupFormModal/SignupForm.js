@@ -36,7 +36,7 @@ function SignupForm() {
         <div className='error-container'>
           {errors.length > 0 && (
             <div className='form-error-container'>
-              <span className="error-title">The following errors occured:</span>
+              <span className="error-title">The following errors occurred:</span>
               {/* <ul className='signin-form-errors'> */}
               {errors.map((error, ind) => (
                 <li className='error-list' key={ind}>{error}</li>
