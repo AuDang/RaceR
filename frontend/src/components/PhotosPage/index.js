@@ -29,7 +29,6 @@ const PhotosPage = () => {
   <div className="photos-container">
    <div className='photo-card'>
     {photoData?.reverse().map((photo) => (
-     <>
       <div className='photos' key={photo.id}>
        <NavLink className='photoId' key={photo.id}  to={`/photos/${photo.id}`}>
         <div className='single-photo'>
@@ -41,7 +40,6 @@ const PhotosPage = () => {
        </NavLink>
         <p className='userName'>Posted By: {photo.User?.username}</p>
       </div>
-     </>
     ))}
    </div>
   </div>

@@ -7,61 +7,67 @@ import { useParams } from "react-router-dom"
 
 
 const PhotoEdit = ({photo, showModal}) => {
+const {id} = useParams()
 const history = useHistory()
 const dispatch = useDispatch()
-
-
-const [caption,setCaption] = useState(photo?.caption ||'')
-// console.log('photo', photo)
-const [errors, setErrors] = useState([])
-const [showErrors, setShowErrors] = useState([])
-const [hasSubmitted, setHasSubmitted] =useState(false)
 const sessionUser = useSelector((state) => state.session.user)
-const {id} = useParams()
-// console.log(photo)
+// const photos = useSelector((state)=> state.photos[id])
 
-const updateCaption = (e) => setCaption(e.target.value);
+// console.log('photos', photos)
+console.log('photo', photo)
+
+const [caption,setCaption] = useState(photo?.caption|| '' )
+const [photoUrl, setPhotoUrl] = useState(photo?.photoUrl || '')
+const [errors, setErrors] = useState([])
+const [hasSubmitted, setHasSubmitted] =useState(false)
+const updatePhoto = (e) => setPhotoUrl(e.target.files[0])
 
 
-useEffect(() => {
- const errors = [];
- if(caption.length === 0 ) {
-  errors.push('Title can not be empty')
- }
- setErrors(errors)
-},[caption])
+// useEffect(() => {
+//  const errors = [];
+//  if(caption.length === 0 ) {
+//   errors.push('Title can not be empty')
+//  }
+//  setErrors(errors)
+// },[caption])
 
 const handleSubmit = async (e) => {
  e.preventDefault()
- setHasSubmitted(true)
-  if(errors.length > 0) return 
+  setErrors([]);
+  setHasSubmitted(true)
+  if(errors.length > 0) setErrors(errors)
 
     
-    const payload = {
-      userId:sessionUser.id,
-      caption,
-      id
-    }
-    
-    let uploadedPhoto = await dispatch(editPhoto(payload))
-    // console.log(uploadedPhoto)
-    
+    // const payload = {
+    //   userId:sessionUser.id,
+    //   caption,
+    //   photoUrl:photoUrl,
+    //   id
+    // }
+  const edit = await dispatch(editPhoto({
+    id:photo.id,
+    userId: sessionUser?.id,
+    caption:caption,
+    photoUrl:photoUrl
+  }))
+
+    let uploadedPhoto = await dispatch(editPhoto(edit))
+    .catch(async(res) => {
+      const data = await res.json()
+      if (data && data.errors) setErrors(data.errors)
+      })
+
     if (uploadedPhoto) {
-      setShowErrors([])
       showModal(false)
-      // setCaption()
+      // setCaption('')
       history.push(`/photos/${uploadedPhoto.id}`)
-    } else {
-      setShowErrors(errors)
-
-    }
-
+    } 
 }
-const handleCancelClick = (e) => {
- e.preventDefault()
- showModal(false)
-//  history.push('/photos')
-}
+  const handleCancelClick = (e) => {
+  e.preventDefault()
+  showModal(false)
+  //  history.push('/photos')
+  }
 
  return (
   <div>
@@ -76,7 +82,7 @@ const handleCancelClick = (e) => {
         <div className='error-container'>
           {errors.length > 0 && (
             <div className='form-error-container'>
-              <span className="error-title">The following errors occured:</span>
+              <span className="error-title">The following errors occurred:</span>
               {/* <ul className='signin-form-errors'> */}
               {errors.map((error, ind) => (
                 <li className='error-list' key={ind}>{error}</li>
@@ -85,7 +91,8 @@ const handleCancelClick = (e) => {
             </div>
           )}
         </div>
-     <input className='edit-photo-input' type='text' placeholder='Title' value={caption} required onChange={updateCaption}/>
+     <input className='edit-photo-input' type='text' placeholder='Title' value={caption} onChange={(e) =>setCaption(e.target.value)}/>
+      <input className= 'choose-file' type ='file' required onChange={updatePhoto} accept=".jpeg, .jpg, .gif , .png"/>
       <div className='edit-buttons'>
         <button className='photo-edit-button'type='submit'>Edit</button>
         <button className='cancel-upload-button' type='button' onClick={handleCancelClick}>Cancel</button>

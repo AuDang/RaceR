@@ -16,20 +16,20 @@ const sessionUser = useSelector((state) => state.session.user)
 const updateCaption = (e) => setCaption(e.target.value);
 const updatePhoto = (e) => setPhotoUrl(e.target.files[0])
 
-useEffect(() => {
- const errors = [];
- if(caption.length ===0) {
-  errors.push('Title can not be empty')
- }
- setErrors(errors)
-},[caption])
+// useEffect(() => {
+//  const errors = [];
+//  if(caption.length === 0) {
+//   errors.push('Title can not be empty')
+//  }
+//  setErrors(errors)
+// },[caption])
 
 const handleSubmit = async (e) => {
  e.preventDefault()
+ setErrors([]);
  setHasSubmitted(true)
 
-//  if(errors.length > 0) return 
- 
+ if(errors.length > 0) setErrors(errors)
 
 
 const form = new FormData()
@@ -41,14 +41,21 @@ form.append('photoUrl', photoUrl)
 // }
 
   let uploadedPhoto = await dispatch(photoActions.uploadPhoto(form))
-  // console.log(uploadedPhoto)
+  .catch(async(res) => {
 
-  if (uploadedPhoto) {
-  showModal(false)
-  setCaption('')
-   history.push(`/photos/${uploadedPhoto.id}`)
- }
+    const data = await res.json()
+    if (data && data.errors) setErrors(data.errors)
+    })
+    
+    if (uploadedPhoto) {
+      showModal(false)
+      setCaption('')
+      history.push(`/photos/${uploadedPhoto.id}`)
+    }
+    return 
 }
+
+
 const handleCancelClick = (e) => {
   showModal(false)
  e.preventDefault()
@@ -68,7 +75,7 @@ return (
         <div className='error-container'>
           {errors.length > 0 && (
             <div className='form-error-container'>
-              <span className="error-title">The following errors occured:</span>
+              <span className="error-title">The following errors occurred:</span>
               {/* <ul className='signin-form-errors'> */}
               {errors.map((error, ind) => (
                 <li className='error-list' key={ind}>{error}</li>
@@ -77,7 +84,7 @@ return (
             </div>
           )}
         </div>
-    <input className='add-photo-input' type='text' placeholder='Title' value={caption} onChange={updateCaption} required/>
+    <input className='add-photo-input' type='text' placeholder='Title' value={caption} onChange={updateCaption} />
       <input className= 'choose-file' type ='file' required onChange={updatePhoto} accept=".jpeg, .jpg, .gif , .png"/>
         <section className='upload-add-cancel'>
           <button className='add-photo-button'type='submit'>Add Photo</button>
