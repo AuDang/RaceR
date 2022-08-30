@@ -9,18 +9,22 @@ import { useParams } from "react-router-dom"
 const PhotoEdit = ({photo, showModal}) => {
 const history = useHistory()
 const dispatch = useDispatch()
-
-
+const {id} = useParams()
 const [caption,setCaption] = useState(photo?.caption ||'')
-// console.log('photo', photo)
+
+const [photos, setPhotos] = useState(photo?.photoUrl ||'')
+console.log('photoaskdj;fasdkjl;fhdsalk;jfjaskdlf',photos,)
 const [errors, setErrors] = useState([])
 const [showErrors, setShowErrors] = useState([])
 const [hasSubmitted, setHasSubmitted] =useState(false)
 const sessionUser = useSelector((state) => state.session.user)
-const {id} = useParams()
-// console.log(photo)
-
 const updateCaption = (e) => setCaption(e.target.value);
+const updatePhoto = (e) => {
+  const files = e.target.files
+  setPhotos(files)}
+// console.log('update', updatePhoto)
+console.log('photoooo', photo)
+
 
 
 useEffect(() => {
@@ -34,29 +38,41 @@ useEffect(() => {
 const handleSubmit = async (e) => {
  e.preventDefault()
  setHasSubmitted(true)
-  if(errors.length > 0) return 
+  // if(errors.length > 0) return 
 
-    
+  const form = new FormData()
+  form.append('userId', sessionUser.id)
+  form.append('caption', caption)
+  form.append('photoUrl',photos)
+
+
+  
+
+  for (let [key, value] of form.entries()) { 
+  console.log(key, value);
+}
     const payload = {
+      ...photo,
       userId:sessionUser.id,
+      id: photo.id,
       caption,
-      id
+      photos
     }
+
+    console.log('payload', payload)
     
-    let uploadedPhoto = await dispatch(editPhoto(payload))
-    // console.log(uploadedPhoto)
+    let uploadedPhoto = await dispatch(editPhoto(form))
+     console.log('this is stupid',uploadedPhoto)
     
     if (uploadedPhoto) {
-      setShowErrors([])
+      setErrors([])
       showModal(false)
       // setCaption()
       history.push(`/photos/${uploadedPhoto.id}`)
-    } else {
-      setShowErrors(errors)
-
-    }
-
+    }     
 }
+
+
 const handleCancelClick = (e) => {
  e.preventDefault()
  showModal(false)
@@ -86,6 +102,7 @@ const handleCancelClick = (e) => {
           )}
         </div>
      <input className='edit-photo-input' type='text' placeholder='Title' value={caption} required onChange={updateCaption}/>
+      <input className= 'choose-file' type ='file'  onChange={updatePhoto} accept=".jpeg, .jpg, .gif , .png"/>
       <div className='edit-buttons'>
         <button className='photo-edit-button'type='submit'>Edit</button>
         <button className='cancel-upload-button' type='button' onClick={handleCancelClick}>Cancel</button>

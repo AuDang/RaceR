@@ -11,7 +11,7 @@ const [caption,setCaption] = useState('')
 const [photoUrl, setPhotoUrl] = useState('')
 const [errors, setErrors] = useState([])
 const [hasSubmitted, setHasSubmitted] =useState(false)
-const [showErrors, setShowErrors]= useState([])
+// const [showErrors, setShowErrors]= useState([])
 const sessionUser = useSelector((state) => state.session.user)
 const updateCaption = (e) => setCaption(e.target.value);
 const updatePhoto = (e) => setPhotoUrl(e.target.files[0])
@@ -40,12 +40,12 @@ form.append('photoUrl', photoUrl)
 //   console.log(key, value);
 // }
 
-  let uploadedPhoto = await dispatch(photoActions.uploadPhoto(form))
-  .catch(async(res) => {
+  let uploadedPhoto = await dispatch(photoActions.uploadPhoto(form)).catch(async(res) => {
 
     const data = await res.json()
-    if (data && data.errors) setErrors(data.errors)
-    })
+    console.log('data', data)
+    if (data.errors) setErrors(data.errors)
+  })
     
     if (uploadedPhoto) {
       showModal(false)
@@ -66,6 +66,7 @@ return (
  <div>
   <section className='add-photo-container'>
    <form className='add-photo-form' onSubmit={handleSubmit}>
+    
     {/* <ul className='errors'>
      {hasSubmitted && errors?.map((error, idx) => {
       <li key={idx}>{error}</li>

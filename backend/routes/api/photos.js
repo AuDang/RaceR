@@ -11,12 +11,17 @@ const {singleMulterUpload, uploadFile, singlePublicFileUpload} =require('../../a
 
 const validatePhoto = [
  check('caption')
-  .notEmpty()
-  .withMessage('Title must contain text')
-  .isLength({min:1})
-  .withMessage('Your title must be longer than 1 characters'),
+  .not()
+  .isEmpty()
+  .withMessage('Title must contain text'),
+  // check('photoUrl')
+  // .notEmpty()
+  // .withMessage('Please upload a photo'),
+  // .exists({checkFalsy: true})
+  // .isLength({min:1, max:100})
+  // .withMessage('Your title must be between 1 and 100 characters'),
   handleValidationErrors
-]
+];
 
 const photoNotFoundError = (id) => {
  const err = Error("Photo not found");
@@ -42,7 +47,7 @@ next(photoNotFoundError(req.params.id))
 }
 }))
 
-router.post('/newPhoto', validatePhoto,requireAuth,singleMulterUpload('photoUrl'), asyncHandler(async(req, res) => {
+router.post('/newPhoto', requireAuth,singleMulterUpload('photoUrl'), asyncHandler(async(req, res) => {
   // console.log('hello', req.file)
  const {userId, albumId, caption} = req.body
  let photoUrl = await singlePublicFileUpload (req.file)
@@ -58,12 +63,13 @@ router.post('/newPhoto', validatePhoto,requireAuth,singleMulterUpload('photoUrl'
 //  return res.json(id)
 // }))
 
-router.put('/:id', validatePhoto, requireAuth,asyncHandler(async(req,res) => {
+router.put('/:id', requireAuth,singleMulterUpload('photoUrl'),asyncHandler(async(req,res) => {
   // console.log('tester', req.params.id)
 const parsedPhotoId = parseInt(req.params.id, 10)
 const {userId, albumId, caption} = req.body;
-const photo = await Photo.findByPk(parsedPhotoId, {include: db.User})
-const newPhoto = await photo.update({userId, albumId, caption})
+const photo = await Photo.findByPk(parsedPhotoId, {include: db.User, })
+let photoUrl = await singlePublicFileUpload (req.file)
+const newPhoto = await photo.update({userId, albumId, caption,photoUrl})
 return res.json(newPhoto)
 }))
 

@@ -85,3 +85,8 @@ cursor: pointer;
 font-size: 17px;
 width: 245px;
 }
+.image-preview {
+   height: 200px;
+   margin: 10px;
+
+}
