@@ -86,11 +86,13 @@ formData.append('userId', userId)
 formData.append('caption', caption)
 formData.append('photoUrl', photoUrl)
 
+console.log('PAYLOAD', payload)
 const res = await csrfFetch(`/api/photos/${+payload.id}`, {
  method: "PUT",
  headers: {'Content-Type':'multipart/form-data'},
  body: payload
 })
+
 if (res.ok) {
  const photo = await res.json()
  dispatch(addOnePhoto(photo))

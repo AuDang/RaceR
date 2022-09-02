@@ -69,6 +69,7 @@ const parsedPhotoId = parseInt(req.params.id, 10)
 const {userId, albumId, caption} = req.body;
 const photo = await Photo.findByPk(parsedPhotoId, {include: db.User, })
 let photoUrl = await singlePublicFileUpload (req.file)
+console.log('sdfkjasdfhskadjfhasdkjf', photoUrl)
 const newPhoto = await photo.update({userId, albumId, caption,photoUrl})
 return res.json(newPhoto)
 }))

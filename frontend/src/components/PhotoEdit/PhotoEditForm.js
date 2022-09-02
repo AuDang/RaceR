@@ -13,7 +13,7 @@ const {id} = useParams()
 const [caption,setCaption] = useState(photo?.caption ||'')
 
 const [photos, setPhotos] = useState(photo?.photoUrl ||'')
-console.log('photoaskdj;fasdkjl;fhdsalk;jfjaskdlf',photos,)
+// console.log('photoaskdj;fasdkjl;fhdsalk;jfjaskdlf',photos)
 const [errors, setErrors] = useState([])
 const [showErrors, setShowErrors] = useState([])
 const [hasSubmitted, setHasSubmitted] =useState(false)
@@ -23,7 +23,7 @@ const updatePhoto = (e) => {
   const files = e.target.files
   setPhotos(files)}
 // console.log('update', updatePhoto)
-console.log('photoooo', photo)
+// console.log('photoooo', photo)
 
 
 
@@ -43,25 +43,22 @@ const handleSubmit = async (e) => {
   const form = new FormData()
   form.append('userId', sessionUser.id)
   form.append('caption', caption)
-  form.append('photoUrl',photos)
+  form.append('photoUrl',photos.name)
 
-
-  
-
-  for (let [key, value] of form.entries()) { 
-  console.log(key, value);
-}
+//   for (let [key, value] of form.entries()) { 
+//   console.log(key, value);
+// }
     const payload = {
       ...photo,
       userId:sessionUser.id,
       id: photo.id,
       caption,
-      photos
+      photoUrl:photos[0]
     }
 
-    console.log('payload', payload)
+    // console.log('payload', payload)
     
-    let uploadedPhoto = await dispatch(editPhoto(form))
+    let uploadedPhoto = await dispatch(editPhoto(payload))
      console.log('this is stupid',uploadedPhoto)
     
     if (uploadedPhoto) {
