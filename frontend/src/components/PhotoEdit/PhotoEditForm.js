@@ -10,7 +10,7 @@ const PhotoEdit = ({photo, showModal}) => {
 const history = useHistory()
 const dispatch = useDispatch()
 const {id} = useParams()
-const [caption,setCaption] = useState(photo?.caption ||'')
+const [caption,setCaption] = useState(photo?.caption)
 
 const [photos, setPhotos] = useState(photo?.photoUrl ||'')
 // console.log('photoaskdj;fasdkjl;fhdsalk;jfjaskdlf',photos)
@@ -40,26 +40,26 @@ const handleSubmit = async (e) => {
  setHasSubmitted(true)
   // if(errors.length > 0) return 
 
-  const form = new FormData()
-  form.append('userId', sessionUser.id)
-  form.append('caption', caption)
-  form.append('photoUrl',photos.name)
+  // const form = new FormData()
+  // form.append('userId', sessionUser.id)
+  // form.append('caption', caption)
+  // form.append('photoUrl',photos.name)
 
 //   for (let [key, value] of form.entries()) { 
 //   console.log(key, value);
 // }
     const payload = {
-      ...photo,
+      // ...photo,
       userId:sessionUser.id,
       id: photo.id,
-      caption,
+      caption:caption,
       photoUrl:photos[0]
     }
 
-    // console.log('payload', payload)
+    console.log('payload', payload)
     
     let uploadedPhoto = await dispatch(editPhoto(payload))
-     console.log('this is stupid',uploadedPhoto)
+     console.log('testttttt',uploadedPhoto)
     
     if (uploadedPhoto) {
       setErrors([])
@@ -99,7 +99,7 @@ const handleCancelClick = (e) => {
           )}
         </div>
      <input className='edit-photo-input' type='text' placeholder='Title' value={caption} required onChange={updateCaption}/>
-      <input className= 'choose-file' type ='file'  onChange={updatePhoto} accept=".jpeg, .jpg, .gif , .png"/>
+      {/* <input className= 'choose-file' type ='file'  onChange={updatePhoto} accept=".jpeg, .jpg, .gif , .png"/> */}
       <div className='edit-buttons'>
         <button className='photo-edit-button'type='submit'>Edit</button>
         <button className='cancel-upload-button' type='button' onClick={handleCancelClick}>Cancel</button>

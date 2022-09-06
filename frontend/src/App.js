@@ -8,8 +8,11 @@ import PhotosPage from './components/PhotosPage'
 import PhotoDetails from "./components/PhotoDetails";
 import PhotoUploadForm from "./components/PhotoUploadModal";
 import ErrorPage from "./components/404";
+// import UserProfile from "./components/UserProfile/UserProfile";
+import UserProfile from "./components/UserProfile/UserProfile";
 import { loadAllPhotos } from "./store/photo";
 import Footer from "./components/Footer/Footer";
+
 
 
 import { useSelector } from 'react-redux'
@@ -36,6 +39,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <LandingPage />
+          </Route>
+          <Route path='/users/:id'>
+            <UserProfile />
           </Route>
           <Route exact path='/photos'>
             <PhotosPage />

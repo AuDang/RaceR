@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import PhotoUploadModal from "../PhotoUploadModal";
+import { NavLink } from "react-router-dom";
 import * as sessionActions from '../../store/session';
 import './Navigation.css'
 
@@ -40,7 +41,8 @@ function ProfileButton({ user }) {
       {showMenu && (
         <div className="profile-dropdown">
           <div className='dropdown-list'>
-            <a>{user.username}</a>
+            <NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
+            {/* <a>{user.username}</a> */}
             <a>{user.email}</a>
             <button className='logout-button'onClick={logout}>Logout</button>          {/* </div> */}
           </div>

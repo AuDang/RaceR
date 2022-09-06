@@ -7,7 +7,7 @@ const {check, validationResult} = require('express-validator')
 const {handleValidationErrors} = require('../../utils/validation')
 const {requireAuth} = require('../../utils/auth')
 
-const {singleMulterUpload, uploadFile, singlePublicFileUpload} =require('../../aws')
+const {singleMulterUpload, uploadFile, singlePublicFileUpload, multiplePublicFileUpload} =require('../../aws')
 
 const validatePhoto = [
  check('caption')
@@ -52,6 +52,7 @@ router.post('/newPhoto', requireAuth,singleMulterUpload('photoUrl'), asyncHandle
  const {userId, albumId, caption} = req.body
  let photoUrl = await singlePublicFileUpload (req.file)
 //  console.log('hello', photoUrl)
+console.log('fileeeeeee', req.file)
  const photo = await Photo.create({userId, albumId, caption, photoUrl})
  return res.json(photo)
 }))
@@ -63,16 +64,25 @@ router.post('/newPhoto', requireAuth,singleMulterUpload('photoUrl'), asyncHandle
 //  return res.json(id)
 // }))
 
-router.put('/:id', requireAuth,singleMulterUpload('photoUrl'),asyncHandler(async(req,res) => {
+router.put('/:id', requireAuth,singleMulterUpload('image'),asyncHandler(async(req,res) => {
   // console.log('tester', req.params.id)
+const {userId, albumId, caption, photoUrl} = req.body;
+
 const parsedPhotoId = parseInt(req.params.id, 10)
-const {userId, albumId, caption} = req.body;
+// console.log('BODYYYYYY', req.body)
+
 const photo = await Photo.findByPk(parsedPhotoId, {include: db.User, })
-let photoUrl = await singlePublicFileUpload (req.file)
-console.log('sdfkjasdfhskadjfhasdkjf', photoUrl)
-const newPhoto = await photo.update({userId, albumId, caption,photoUrl})
+// if (req.file) {
+  // const image = await singlePublicFileUpload (req.file)
+  // console.log('sdfkjasdfhskadjfhasdkjf', image)
+  // console.log('fileeeeeee', req.file)
+// } 
+const newPhoto = await photo.update({userId, albumId, caption})
+
 return res.json(newPhoto)
 }))
+
+
 
 router.delete('/:id', requireAuth ,asyncHandler(async(req, res) => {
  const parsedPhotoId = parseInt(req.params.id)
