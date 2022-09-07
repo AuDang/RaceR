@@ -229,3 +229,8 @@
 /* li {
    list-style-type: none;
 } */
+
+.dropdown-username {
+   color:rgb(255, 217, 0);
+   text-decoration: none;
+}

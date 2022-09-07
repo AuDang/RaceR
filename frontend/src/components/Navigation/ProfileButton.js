@@ -41,7 +41,7 @@ function ProfileButton({ user }) {
       {showMenu && (
         <div className="profile-dropdown">
           <div className='dropdown-list'>
-            <NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
+            <NavLink className='dropdown-username' to={`/users/${user.id}`}>{user.username}</NavLink>
             {/* <a>{user.username}</a> */}
             <a>{user.email}</a>
             <button className='logout-button'onClick={logout}>Logout</button>          {/* </div> */}

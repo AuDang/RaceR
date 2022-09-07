@@ -11,10 +11,10 @@ const UserProfile = () => {
    const history = useHistory()
    const {id} = useParams()
    const sessionUser = useSelector(state => state.session.user)
-   console.log('user1', sessionUser)
+   // console.log('user1', sessionUser)
 
    const photos = (useSelector(state=> state.photos))
-   console.log('photos', photos)
+   // console.log('photos', photos)
 
    const photosArr = Object.values(photos)
    console.log('photosArr', photosArr)
@@ -32,14 +32,19 @@ const UserProfile = () => {
       <div className='user-profile-container'>
          <div className='top-div'>
             <div className='top-div-info'>
-               {sessionUser?.username}
+               {sessionUser?.username} 
             </div>
          </div>
          <div className='user-photos-container'>
             {filteredPhotos.map((photo) => (
                <div className='filtered-photos-container'>
                   <NavLink to={`/photos/${photo?.id}`}>
+                     {/* {photo.User.username} */}
                      <img className='filtered-user-photos'src={photo?.photoUrl} alt={`photos #${photo.id}`}></img>
+                     <div className='filtered-caption-layer'>
+                        <p className='filtered-caption'>{photo.caption}</p>
+                        <p className='filtered-name'> by {photo.User.username}</p>
+                     </div>
                   </NavLink>
                </div>
             ))}
