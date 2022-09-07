@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect,useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, useHistory, useParams } from 'react-router-dom'
 import forest from '../../images/forest.jpg'
@@ -10,6 +10,7 @@ const UserProfile = () => {
    const dispatch =useDispatch()
    const history = useHistory()
    const {id} = useParams()
+   const [users, setUser] = useState({});
    const sessionUser = useSelector(state => state.session.user)
    // console.log('user1', sessionUser)
 
@@ -22,9 +23,27 @@ const UserProfile = () => {
    const filteredPhotos= photosArr.filter(({userId}) => userId === +id)
    console.log('fitlered', filteredPhotos)
 
-   if (sessionUser === undefined) {
-      history.push('/404')
-   }
+   // console.log('userkjhgjkhgjhgjkgkjs', user)
+
+   // if (sessionUser === undefined) {
+   //    history.push('/404')
+   // }
+
+  useEffect(() => {
+   //  if (!id) {
+   //    return;
+   //  }
+    (async () => {
+      const response = await fetch(`/api/users/${id}`);
+      const users = await response.json();
+      setUser(users);
+    })();
+  }, [id]);
+
+  const user = Object.values(users)
+//   console.log('userererer', user)
+  const filteredUser = user.filter(({id}) => id === +id)
+  console.log('filteredID', filteredUser)
 
 
 
@@ -32,7 +51,15 @@ const UserProfile = () => {
       <div className='user-profile-container'>
          <div className='top-div'>
             <div className='top-div-info'>
-               {sessionUser?.username} 
+               {filteredUser.map((user) => (
+                  <div>
+                     {user.id === id && (<p>{user.username}</p>)}
+                     {/* {user.username} */}
+                     {user.id}
+                     {id}
+                     {console.log('params', user.id)}
+                  </div>
+               ))}
             </div>
          </div>
          <div className='user-photos-container'>

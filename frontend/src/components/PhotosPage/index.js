@@ -33,12 +33,12 @@ const PhotosPage = () => {
        <NavLink className='photoId' key={photo.id}  to={`/photos/${photo.id}`}>
         <div className='single-photo'>
          <img className='photo-url'src={photo.photoUrl} alt=''/>
-        </div>
-        <div className='photo-content'>
-         <p className='photo-words'> {photo.caption}</p>
+          <div className='photo-content'>
+            <p className='photo-words'> {photo.caption}</p>
+            <p className='userName'>Posted By: {photo.User?.username}</p>
+          </div>
         </div>
        </NavLink>
-        <p className='userName'>Posted By: {photo.User?.username}</p>
       </div>
     ))}
    </div>

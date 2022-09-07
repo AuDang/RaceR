@@ -5,6 +5,7 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { User } = require('../../db/models');
+const { db } = require('../../config');
 
 const router = express.Router();
 
@@ -44,4 +45,10 @@ router.post(
   }),
 );
 
+router.get('/:id', asyncHandler(async(req,res) => {
+  const user = await User.findAll({include:db.User})
+  res.json(user)
+})
+
+)
 module.exports = router;
