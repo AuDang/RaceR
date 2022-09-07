@@ -10,7 +10,7 @@ import PhotoUploadForm from "./components/PhotoUploadModal";
 import ErrorPage from "./components/404";
 // import UserProfile from "./components/UserProfile/UserProfile";
 import UserProfile from "./components/UserProfile/UserProfile";
-import { loadAllPhotos } from "./store/photo";
+import { getOnePhoto, loadAllPhotos } from "./store/photo";
 import Footer from "./components/Footer/Footer";
 
 
@@ -25,8 +25,10 @@ function App() {
 
   useEffect(() => { 
     (async() => {
-    await dispatch(loadAllPhotos()).then(() => setIsLoaded(true))
-    await dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+    await dispatch(loadAllPhotos())
+    await dispatch(sessionActions.restoreUser());
+    // await dispatch(getOnePhoto())
+    setIsLoaded(true)
   })()
   }, [dispatch]);
   const sessionUser = useSelector(state => state.session.user);
