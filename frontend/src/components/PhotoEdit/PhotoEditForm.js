@@ -50,7 +50,7 @@ const handleSubmit = async (e) => {
 //   console.log(key, value);
 // }
     const payload = {
-      // ...photo,
+      ...photo,
       userId:sessionUser.id,
       id: photo.id,
       caption:caption,
