@@ -16,6 +16,7 @@ import Footer from "./components/Footer/Footer";
 
 
 import { useSelector } from 'react-redux'
+import { loadProfiles } from "./store/profile";
 
 
 

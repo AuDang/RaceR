@@ -64,20 +64,18 @@ console.log('fileeeeeee', req.file)
 //  return res.json(id)
 // }))
 
-router.put('/:id', requireAuth,singleMulterUpload('image'),asyncHandler(async(req,res) => {
+router.put('/:id', requireAuth,singleMulterUpload('photoUrl'),asyncHandler(async(req,res) => {
   // console.log('tester', req.params.id)
-const {userId, albumId, caption, photoUrl} = req.body;
+const {userId, albumId, caption,} = req.body;
 
 const parsedPhotoId = parseInt(req.params.id, 10)
-// console.log('BODYYYYYY', req.body)
-
-const photo = await Photo.findByPk(parsedPhotoId, {include: db.User, })
+const photoUrl = await Photo.findByPk(parsedPhotoId, {include: db.User, })
 // if (req.file) {
-  // const image = await singlePublicFileUpload (req.file)
+  const photo = await singlePublicFileUpload (req.file)
   // console.log('sdfkjasdfhskadjfhasdkjf', image)
   // console.log('fileeeeeee', req.file)
 // } 
-const newPhoto = await photo.update({userId, albumId, caption})
+const newPhoto = await photo.update({userId, albumId, caption,photoUrl})
 
 return res.json(newPhoto)
 }))

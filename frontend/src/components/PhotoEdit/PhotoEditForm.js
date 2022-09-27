@@ -13,7 +13,6 @@ const {id} = useParams()
 const [caption,setCaption] = useState(photo?.caption)
 
 const [photos, setPhotos] = useState(photo?.photoUrl ||'')
-// console.log('photoaskdj;fasdkjl;fhdsalk;jfjaskdlf',photos)
 const [errors, setErrors] = useState([])
 const [showErrors, setShowErrors] = useState([])
 const [hasSubmitted, setHasSubmitted] =useState(false)
@@ -38,28 +37,28 @@ useEffect(() => {
 const handleSubmit = async (e) => {
  e.preventDefault()
  setHasSubmitted(true)
-  // if(errors.length > 0) return 
+  if(errors.length > 0) return 
 
-  // const form = new FormData()
-  // form.append('userId', sessionUser.id)
-  // form.append('caption', caption)
-  // form.append('photoUrl',photos.name)
+  const form = new FormData()
+  form.append('userId', sessionUser.id)
+  form.append('caption', caption)
+  form.append('photoUrl', photos)
 
-//   for (let [key, value] of form.entries()) { 
-//   console.log(key, value);
-// }
-    const payload = {
-      // ...photo,
-      userId:sessionUser.id,
-      id: photo.id,
-      caption:caption,
-      photoUrl:photos[0]
-    }
+  for (let [key, value] of form.entries()) { 
+  console.log(key, value);
+}
+    // const payload = {
+    //   // ...photo,
+    //   userId:sessionUser.id,
+    //   id: photo.id,
+    //   caption:caption,
+    //   photoUrl:photos[0]
+    // }
 
-    console.log('payload', payload)
+    // console.log('payload', payload)
     
-    let uploadedPhoto = await dispatch(editPhoto(payload))
-     console.log('testttttt',uploadedPhoto)
+    let uploadedPhoto = await dispatch(editPhoto(form))
+     console.log('test',uploadedPhoto)
     
     if (uploadedPhoto) {
       setErrors([])
@@ -99,7 +98,7 @@ const handleCancelClick = (e) => {
           )}
         </div>
      <input className='edit-photo-input' type='text' placeholder='Title' value={caption} required onChange={updateCaption}/>
-      {/* <input className= 'choose-file' type ='file'  onChange={updatePhoto} accept=".jpeg, .jpg, .gif , .png"/> */}
+      <input className= 'choose-file' type ='file'  onChange={updatePhoto} accept=".jpeg, .jpg, .gif , .png"/>
       <div className='edit-buttons'>
         <button className='photo-edit-button'type='submit'>Edit</button>
         <button className='cancel-upload-button' type='button' onClick={handleCancelClick}>Cancel</button>
