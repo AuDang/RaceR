@@ -20,6 +20,7 @@ const sessionUser = useSelector((state) => state.session.user)
 const updateCaption = (e) => setCaption(e.target.value);
 const updatePhoto = (e) => {
   const files = e.target.files
+  console.log('FILES', files)
   setPhotos(files)}
 // console.log('update', updatePhoto)
 // console.log('photoooo', photo)
@@ -35,30 +36,31 @@ useEffect(() => {
 },[caption])
 
 const handleSubmit = async (e) => {
+  console.log('handlesubmit', photos[0])
  e.preventDefault()
  setHasSubmitted(true)
   if(errors.length > 0) return 
 
-  const form = new FormData()
-  form.append('userId', sessionUser.id)
-  form.append('caption', caption)
-  form.append('photoUrl', photos)
+//   const form = new FormData()
+//   form.append('userId', sessionUser.id)
+//   form.append('caption', caption)
+//   form.append('photoUrl', photos)
 
-  for (let [key, value] of form.entries()) { 
-  console.log(key, value);
-}
-    // const payload = {
-    //   // ...photo,
-    //   userId:sessionUser.id,
-    //   id: photo.id,
-    //   caption:caption,
-    //   photoUrl:photos[0]
-    // }
+//   for (let [key, value] of form.entries()) { 
+//   console.log(key, value);
+// }
+    const payload = {
+      // ...photo,
+      userId:sessionUser.id,
+      id: photo.id,
+      caption:caption,
+      photoUrl:photos[0]
+    }
 
     // console.log('payload', payload)
     
-    let uploadedPhoto = await dispatch(editPhoto(form))
-     console.log('test',uploadedPhoto)
+    let uploadedPhoto = await dispatch(editPhoto(payload))
+    //  console.log('TESSSSST',uploadedPhoto)
     
     if (uploadedPhoto) {
       setErrors([])

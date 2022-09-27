@@ -36,9 +36,11 @@ const form = new FormData()
 form.append('userId', sessionUser.id)
 form.append('caption', caption)
 form.append('photoUrl', photoUrl)
-// for (let [key, value] of form.entries()) { 
-//   console.log(key, value);
-// }
+
+
+for (let [key, value] of form.entries()) { 
+  console.log(key, value);
+}
 
   let uploadedPhoto = await dispatch(photoActions.uploadPhoto(form)).catch(async(res) => {
 

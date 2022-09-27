@@ -66,14 +66,13 @@ console.log('fileeeeeee', req.file)
 
 router.put('/:id', requireAuth,singleMulterUpload('photoUrl'),asyncHandler(async(req,res) => {
   // console.log('tester', req.params.id)
+  console.log('fileeeeeee', req.file)
 const {userId, albumId, caption,} = req.body;
-
 const parsedPhotoId = parseInt(req.params.id, 10)
-const photoUrl = await Photo.findByPk(parsedPhotoId, {include: db.User, })
+const  photo = await Photo.findByPk(parsedPhotoId, {include: db.User, })
 // if (req.file) {
-  const photo = await singlePublicFileUpload (req.file)
-  // console.log('sdfkjasdfhskadjfhasdkjf', image)
-  // console.log('fileeeeeee', req.file)
+  const photoUrl = await singlePublicFileUpload (req.file)
+  // console.log('REQUEST', )
 // } 
 const newPhoto = await photo.update({userId, albumId, caption,photoUrl})
 
