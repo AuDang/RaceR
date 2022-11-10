@@ -79,6 +79,7 @@ export const uploadPhoto = (data) => async(dispatch) => {
 //  return photo
 // }
 // }
+
 export const editPhoto = (payload) => async (dispatch) => {
 const {userId,caption,photoUrl} =payload
 const formData = new FormData()
@@ -86,7 +87,7 @@ formData.append('userId', userId)
 formData.append('caption', caption)
 formData.append('photoUrl', photoUrl)
 
-console.log('PAYLOAD', payload)
+// console.log('PAYLOAD', payload)
 const res = await csrfFetch(`/api/photos/${+payload.id}`, {
  method: "PUT",
  headers: {'Content-Type':'multipart/form-data'},

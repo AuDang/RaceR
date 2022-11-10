@@ -48,7 +48,7 @@ next(photoNotFoundError(req.params.id))
 }))
 
 router.post('/newPhoto', requireAuth,singleMulterUpload('photoUrl'), asyncHandler(async(req, res) => {
-  // console.log('hello', req.file)
+  console.log('hello', req.file)
  const {userId, albumId, caption} = req.body
  let photoUrl = await singlePublicFileUpload (req.file)
 //  console.log('hello', photoUrl)
@@ -66,15 +66,19 @@ console.log('fileeeeeee', req.file)
 
 router.put('/:id', requireAuth,singleMulterUpload('photoUrl'),asyncHandler(async(req,res) => {
   // console.log('tester', req.params.id)
-  console.log('fileeeeeee', req.file)
-const {userId, albumId, caption,} = req.body;
-const parsedPhotoId = parseInt(req.params.id, 10)
-const  photo = await Photo.findByPk(parsedPhotoId, {include: db.User, })
+  // console.log('fileeeeeee', req.file)
+  // console.log('id--------------------', req.body )
+  const {userId, id, albumId, caption} = req.body;
+// const parsedPhotoId = parseInt(req.params.id, 10)
+// console.log('-----------------------', parsedPhotoId)
+const photo = await Photo.findByPk(id, {include: db.User, })
 // if (req.file) {
+  // console.log('photo', photo)
   const photoUrl = await singlePublicFileUpload (req.file)
-  // console.log('REQUEST', )
-// } 
-const newPhoto = await photo.update({userId, albumId, caption,photoUrl})
+  // console.log('photoURL', photoUrl)
+  
+  const newPhoto = await photo.update({userId, albumId, caption,photoUrl})
+  // console.log('newPhoto', newPhoto)
 
 return res.json(newPhoto)
 }))
